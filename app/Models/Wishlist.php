@@ -14,25 +14,19 @@ class Wishlist extends Model
 
     protected $fillable = [
         'user_id',
-        'item_id',
-        'store_id'
+        'item_store_id',
     ];
 
     protected $casts = [];
 
 
-    public function item(): BelongsTo
+    public function itemStore(): BelongsTo
     {
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo(ItemStore::class);
     }
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function store(): BelongsTo
-    {
-        return $this->belongsTo(Store::class);
     }
 }

@@ -49,12 +49,6 @@ class Store extends Model
         return $this->hasMany(Work::class);
     }
 
-    public function wishlists(): HasMany
-    {
-        return $this->hasMany(Wishlist::class);
-    }
-
-
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);

@@ -39,11 +39,6 @@ class Item extends Model
         return $this->hasMany(Rate::class);
     }
 
-    public function wishlists(): HasMany
-    {
-        return $this->hasMany(Wishlist::class);
-    }
-
     public function offers(): HasMany
     {
         return $this->hasMany(Offer::class);
