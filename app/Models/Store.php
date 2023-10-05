@@ -15,7 +15,7 @@ class Store extends Model
 
     protected $fillable = [
         'name',
-        'city',
+        'city_id',
     ];
     protected $casts = [];
 
@@ -52,5 +52,11 @@ class Store extends Model
     public function wishlists(): HasMany
     {
         return $this->hasMany(Wishlist::class);
+    }
+
+
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
     }
 }
