@@ -13,6 +13,7 @@ class Work extends Model
     protected $table = 'works';
 
     protected $fillable = [
+        'store_id',
         'day',
         'working',
         'from',
