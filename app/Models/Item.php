@@ -29,7 +29,7 @@ class Item extends Model
         return $this->hasMany(Cart::class);
     }
 
-    public function item_stores(): HasMany
+    public function itemStores(): HasMany
     {
         return $this->hasMany(ItemStore::class);
     }
@@ -49,9 +49,9 @@ class Item extends Model
         return $this->hasMany(Offer::class);
     }
 
-    public function item_orders(): HasMany
+    public function orderDetails(): HasMany
     {
-        return $this->hasMany(ItemOrder::class);
+        return $this->hasMany(OrderDetail::class);
     }
 
     public function category(): BelongsTo

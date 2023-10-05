@@ -14,11 +14,8 @@ class Store extends Model
     protected $table = 'stores';
 
     protected $fillable = [
-        'admin_id',
         'name',
         'city',
-        'location',
-        'delivery_fee',
     ];
     protected $casts = [];
 
@@ -27,13 +24,7 @@ class Store extends Model
         return $this->hasMany(Ad::class);
     }
 
-
-    public function admin(): BelongsTo
-    {
-        return $this->belongsTo(Admin::class);
-    }
-
-    public function contact_infos(): HasMany
+    public function contactInfos(): HasMany
     {
         return $this->hasMany(ContactInfo::class);
     }
@@ -43,7 +34,7 @@ class Store extends Model
         return $this->hasMany(Feedback::class);
     }
 
-    public function item_stores(): HasMany
+    public function itemStores(): HasMany
     {
         return $this->hasMany(ItemStore::class);
     }
@@ -56,5 +47,10 @@ class Store extends Model
     public function works(): HasMany
     {
         return $this->hasMany(Work::class);
+    }
+
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class);
     }
 }

@@ -20,13 +20,9 @@ class Admin extends Model
         'phone_number',
         'status',
     ];
-    
+
     protected $casts = [
         'password' => 'hashed'
     ];
 
-    public function stores(): HasMany
-    {
-        return $this->hasMany(Store::class);
-    }
 }

@@ -12,7 +12,7 @@ class Order extends Model
     use HasFactory;
 
     protected $table = 'orders';
-    
+
     protected $fillable = [
         'user_id',
         'store_id',
@@ -27,9 +27,9 @@ class Order extends Model
         'time_delivery' => 'datetime'
     ];
 
-    public function item_orders(): HasMany
+    public function orderDetails(): HasMany
     {
-        return $this->hasMany(ItemOrder::class);
+        return $this->hasMany(OrderDetail::class);
     }
 
     public function user(): BelongsTo

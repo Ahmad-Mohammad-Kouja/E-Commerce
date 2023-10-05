@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class UserProduct extends Model
+class Product extends Model
 {
     use HasFactory;
 
     protected $table = 'user_products';
-    
+
     protected $fillable = [
         'user_id',
         'name',
