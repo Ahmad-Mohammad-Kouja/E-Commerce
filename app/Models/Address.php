@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Address extends Model
 {
@@ -22,7 +23,7 @@ class Address extends Model
         'apartment_number',
         'additional_information',
     ];
-    
+
     protected $casts = [];
 
     public function user(): BelongsTo
@@ -30,9 +31,9 @@ class Address extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function orders(): HasMany
+    public function order(): HasOne
     {
-        return $this->hasMany(Order::class);
+        return $this->hasOne(Order::class);
     }
 
     public function region(): BelongsTo
