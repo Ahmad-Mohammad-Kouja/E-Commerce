@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('store_id')->constrained();
-            $table->foreignId('address_id')->constrained();
-            $table->foreignId('payment_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('no action');
+            $table->foreignId('store_id')->constrained()->onDelete('no action');
+            $table->foreignId('address_id')->constrained()->onDelete('no action');
+            $table->foreignId('payment_id')->constrained()->onDelete('no action');
             $table->enum('order_status',['in-progress', 'delivered']);
             $table->enum('payment_status',['paid', 'unpaid']);
             $table->enum('delivery_type',[ 'pickup','delivery']);
