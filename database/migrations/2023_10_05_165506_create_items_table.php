@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained();
             $table->string('name');
             $table->text("description");
             $table->string('image');
             $table->double('weight');
-            $table->integer('quantity');
+            $table->unsignedInteger('quantity');
             $table->string('status');
             $table->timestamps();
         });

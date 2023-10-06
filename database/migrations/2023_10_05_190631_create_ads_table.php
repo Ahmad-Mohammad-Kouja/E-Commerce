@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('image');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->time('start_date');
+            $table->time('end_date');
             $table->timestamps();
         });
     }

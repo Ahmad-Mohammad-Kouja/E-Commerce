@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id();
-            $table->string('day')->unique();
-            $table->enum('working',['on','off']);
-            $table->date('from');
-            $table->date('to');
+            $table->foreignId('store_id')->constrained()->cascadeOnDelete();
+            $table->string('day');
+            $table->boolean('working');
+            $table->time('from');
+            $table->time('to');
             $table->timestamps();
         });
     }

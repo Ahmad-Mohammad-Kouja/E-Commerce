@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->time('start_date');
+            $table->time('end_date');
             $table->enum('type',['percent','fixed']);
-            $table->double('value');
+            $table->unsignedDouble('value');
             $table->timestamps();
         });
     }
