@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Feedback>
  */
-class FeddbackFactory extends Factory
+class FeedbackFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,8 @@ class FeddbackFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::select('id')->inRandomOrder()->get(),
-            'store_id' => Store::select('id')->inRandomOrder()->get(),
+            'user_id' => User::take(User::count())->get()->random()->id,
+            'store_id' => Store::take(Store::count())->get()->random()->id,
             'message' => fake()->text(),
         ];
     }

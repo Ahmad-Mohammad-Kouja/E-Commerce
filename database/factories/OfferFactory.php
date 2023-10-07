@@ -18,7 +18,7 @@ class OfferFactory extends Factory
     public function definition(): array
     {
         return [
-            'item_id' => Item::select('id')->inRandomOrder()->get(),
+            'item_id' => Item::take(Item::count())->get()->random()->id,
             'start_date' => fake()->time(),
             'end_date' => fake()->time(),
             'type' => fake()->randomElement(['percent' , 'fixed']),

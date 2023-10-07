@@ -18,7 +18,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::select('id')->inRandomOrder()->get(),
+            'user_id' => User::take(User::count())->get()->random()->id,
             'name' => fake()->name(),
             'description' => fake()->realText(),
             'price' => fake()->randomFloat(),

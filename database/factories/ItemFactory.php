@@ -18,11 +18,11 @@ class ItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_id' => Category::select('id')->inRandomOrder()->get(),
+            'category_id' => Category::take(Category::count())->get()->random()->id,
             'name' => fake()->name(),
             'description' => fake()->text(),
             'image' => fake()->image(),
-            'weight' => fake()->randomFloat(0.1 , 1000000),
+            'weight' => fake()->randomFloat(0.1 , 10000),
             'quantity' => fake()->randomNumber(),
             'status' => fake()->randomElement(['archived' , 'active']),
         ];

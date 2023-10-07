@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use phpDocumentor\Reflection\Types\Parent_;
 
+/**
+ * @method static count()
+ */
 class Category extends Model
 {
     use HasFactory;
 
     protected $table = 'categories';
-    
+
     protected $fillable = [
         'parent_id',
         'name',

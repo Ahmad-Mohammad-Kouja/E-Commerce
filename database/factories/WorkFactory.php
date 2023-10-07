@@ -18,7 +18,6 @@ class WorkFactory extends Factory
     public function definition(): array
     {
         return [
-            'store_id' => Store::select('id')->inRandomOrder()->get(),
             'day' => fake()->randomElement(['Sat' , 'Sun' , 'Mon' , 'Tue' , 'Wen' , 'Thu' , 'Fri']),
             'working' => fake()->randomNumber([0 , 1]),
             'from' => fake()->time(),

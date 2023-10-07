@@ -20,7 +20,8 @@ class ProviderFactory extends Factory
     {
         return [
             'provider' => fake()->name(),
-            'user_id' => User::select('id')->inRandomOrder()->get(),
+            'user_id' => User::take(User::count())->get()->random()->id,
+            'provider_id' => fake()->uuid(),
             'provider_token' => Str::random(10),
         ];
     }

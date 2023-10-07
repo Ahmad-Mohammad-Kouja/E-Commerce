@@ -3,13 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\Item;
-use App\Models\User;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cart>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OrderDetail>
  */
-class CartFactory extends Factory
+class OrderDetailFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,10 +18,12 @@ class CartFactory extends Factory
      */
     public function definition(): array
     {
+        $order = Order::factory()->create();
         return [
-            'user_id' => User::take(User::count())->get()->random()->id,
+            'order_id' => $order->id,
             'item_id' => Item::take(Item::count())->get()->random()->id,
-            'quantity' => fake()->randomNumber(),
+            'quantity' => fake()->randomNumber(1 , 100),
+            'price' => fake()->randomNumber(),
         ];
     }
 }

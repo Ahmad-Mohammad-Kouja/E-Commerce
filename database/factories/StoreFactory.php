@@ -19,7 +19,7 @@ class StoreFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'city_id' => City::select('id')->inRandomOrder()->get(),
+            'city_id' => City::take(City::count())->get()->random()->id,
         ];
     }
 }

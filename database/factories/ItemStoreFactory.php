@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Item;
 use App\Models\Store;
+use App\Models\Work;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +19,12 @@ class ItemStoreFactory extends Factory
      */
     public function definition(): array
     {
+        $item = Item::factory()->create();
+        $store = Store::factory()->create();
+        Work::factory()->create(['store_id' => $item->id]);
         return [
-            'item_id' => Item::select('id')->inRandomOrder()->get(),
-            'store_id' => Store::select('id')->inRandomOrder()->get(),
+            'item_id' => $item->id,
+            'store_id' => $store->id,
             'price' => fake()->randomNumber(),
         ];
     }
