@@ -19,8 +19,8 @@ class RateFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::take(User::count())->get()->random()->id,
-            'item_id' => Item::take(Item::count())->get()->random()->id,
+            'user_id' => User::factory()->create()->id,
+            'item_id' => Item::factory()->create()->id,
             'content' => fake()->text(),
             'rating' => fake()->randomNumber([1 , 2 , 3 , 4 , 5]),
         ];

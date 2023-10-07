@@ -19,8 +19,8 @@ class FeedbackFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::take(User::count())->get()->random()->id,
-            'store_id' => Store::take(Store::count())->get()->random()->id,
+            'user_id' => User::factory()->create()->id,
+            'store_id' => Store::factory()->create()->id,
             'message' => fake()->text(),
         ];
     }

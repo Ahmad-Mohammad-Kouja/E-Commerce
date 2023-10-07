@@ -18,7 +18,7 @@ class RegionFactory extends Factory
     public function definition(): array
     {
         return [
-            'city_id' => City::take(City::count())->get()->random()->id,
+            'city_id' => City::factory()->create()->id,
             'name' => fake()->country(),
             'delivery_fee' => fake()->numberBetween(2 , 100),
         ];

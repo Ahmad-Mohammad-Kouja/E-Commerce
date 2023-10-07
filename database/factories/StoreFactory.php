@@ -19,7 +19,7 @@ class StoreFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'city_id' => City::take(City::count())->get()->random()->id,
+            'city_id' => City::factory()->create()->id,
         ];
     }
 }

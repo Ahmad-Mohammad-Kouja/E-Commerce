@@ -19,8 +19,8 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-            "user_id" => User::take(User::count())->get()->random()->id,
-            'region_id' => Region::all()->unique()->random()->id,
+            "user_id" => User::factory()->create()->id,
+            'region_id' => Region::factory()->create()->id,
             'name' => fake()->address(),
             'street' => fake()->streetAddress(),
             'building_number' => fake()->buildingNumber(),

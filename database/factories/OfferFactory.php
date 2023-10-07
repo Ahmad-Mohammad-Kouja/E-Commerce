@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Item;
+use App\Models\Offer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class OfferFactory extends Factory
     public function definition(): array
     {
         return [
-            'item_id' => Item::take(Item::count())->get()->random()->id,
+            'item_id' => Offer::factory()->create()->id,
             'start_date' => fake()->time(),
             'end_date' => fake()->time(),
             'type' => fake()->randomElement(['percent' , 'fixed']),

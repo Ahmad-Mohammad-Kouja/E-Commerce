@@ -18,7 +18,7 @@ class ContactInfoFactory extends Factory
     public function definition(): array
     {
         return [
-            'store_id' => Store::take(Store::count())->get()->random()->id,
+            'store_id' => Store::factory()->create()->id,
             'platform' => fake()->name(),
             'contact' => fake()->word(),
         ];

@@ -18,7 +18,7 @@ class ItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_id' => Category::take(Category::count())->get()->random()->id,
+            'category_id' => Category::factory()->create()->id,
             'name' => fake()->name(),
             'description' => fake()->text(),
             'image' => fake()->image(),

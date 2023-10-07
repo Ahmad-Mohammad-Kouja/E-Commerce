@@ -21,7 +21,7 @@ class OrderDetailFactory extends Factory
         $order = Order::factory()->create();
         return [
             'order_id' => $order->id,
-            'item_id' => Item::take(Item::count())->get()->random()->id,
+            'item_id' => Item::factory()->create()->id,
             'quantity' => fake()->randomNumber(1 , 100),
             'price' => fake()->randomNumber(),
         ];

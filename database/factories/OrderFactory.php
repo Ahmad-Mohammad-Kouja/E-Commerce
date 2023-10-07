@@ -23,9 +23,9 @@ class OrderFactory extends Factory
         $payment = Payment::factory()->create();
 
         return [
-            'user_id' => User::take(User::count())->get()->random()->id,
-            'store_id' => Store::take(Store::count())->get()->random()->id,
-            'address_id' => Address::take(Address::count())->get()->random()->id,
+            'user_id' => User::factory()->create()->id,
+            'store_id' => Store::factory()->create()->id,
+            'address_id' => Address::factory()->create()->id,
             'order_status' => fake()->randomElement(['in-progress' , 'delivered']),
             'payment_id' => $payment->id,
             'delivery_type' => fake()->randomElement(['delivery' , 'pickup']),
