@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @method static create(array $array)
+ */
 class Item extends Model
 {
     use HasFactory;
 
-    CONST DEFAULT_STATUS = "active";
+    const DEFAULT_STATUS = "active";
 
     protected $table = 'items';
 

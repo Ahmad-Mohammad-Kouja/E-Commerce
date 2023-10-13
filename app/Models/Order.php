@@ -8,12 +8,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @method static create(array $array)
+ */
 class Order extends Model
 {
     use HasFactory;
 
     protected $table = 'orders';
 
+    const DEFAULT_STATUS = "active";
     protected $fillable = [
         'user_id',
         'store_id',
@@ -47,7 +51,7 @@ class Order extends Model
     {
         return $this->belongsTo(Address::class);
     }
-    
+
     public function payment(): HasOne
     {
         return $this->hasOne(Payment::class);
