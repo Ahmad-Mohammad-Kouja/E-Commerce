@@ -11,6 +11,8 @@ class Item extends Model
 {
     use HasFactory;
 
+    CONST DEFAULT_STATUS = "active";
+
     protected $table = 'items';
 
     protected $fillable = [
