@@ -11,20 +11,15 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\ContactInfo;
 use App\Models\Feedback;
-use App\Models\Item;
 use App\Models\ItemStore;
 use App\Models\Offer;
-use App\Models\Order;
 use App\Models\OrderDetail;
-use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Rate;
 use App\Models\Region;
-use App\Models\Store;
 use App\Models\User;
 use App\Models\Wishlist;
-use App\Models\Work;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

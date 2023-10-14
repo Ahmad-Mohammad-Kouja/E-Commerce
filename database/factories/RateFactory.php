@@ -22,7 +22,7 @@ class RateFactory extends Factory
             'user_id' => User::factory()->create()->id,
             'item_id' => Item::factory()->create()->id,
             'content' => fake()->text(),
-            'rating' => fake()->randomNumber([1 , 2 , 3 , 4 , 5]),
+            'rating' => fake()->randomNumber([1, 2, 3, 4, 5]),
         ];
     }
 }

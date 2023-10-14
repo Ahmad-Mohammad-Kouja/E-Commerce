@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Item;
 use App\Models\Offer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +21,7 @@ class OfferFactory extends Factory
             'item_id' => Offer::factory()->create()->id,
             'start_date' => fake()->time(),
             'end_date' => fake()->time(),
-            'type' => fake()->randomElement(['percent' , 'fixed']),
+            'type' => fake()->randomElement(['percent', 'fixed']),
             'value' => fake()->randomFloat(),
         ];
     }

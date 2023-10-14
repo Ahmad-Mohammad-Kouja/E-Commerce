@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use phpDocumentor\Reflection\Types\Parent_;
 
 /**
  * @method static count()

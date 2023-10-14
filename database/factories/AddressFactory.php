@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Region;
-use App\Models\User;
+use App\Domains\Entities\Models\User;
+use App\Domains\Locations\Models\Region;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +19,8 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-            "user_id" => User::factory()->create()->id,
-            'region_id' => Region::factory()->create()->id,
+            'user_id' => User::factory(),
+            'region_id' => Region::factory(),
             'name' => fake()->address(),
             'street' => fake()->streetAddress(),
             'building_number' => fake()->buildingNumber(),

@@ -18,7 +18,7 @@ class PaymentFactory extends Factory
     {
         return [
             'amount' => fake()->randomNumber(),
-            'payment_method' => fake()->randomElement(['card' , 'digital wallet' , 'transfer' , 'cash']),
+            'payment_method' => fake()->randomElement(['card', 'digital wallet', 'transfer', 'cash']),
             'transaction_data' => fake()->text(),
             'transaction_id' => fake()->randomNumber(),
         ];

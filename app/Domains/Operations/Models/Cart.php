@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Operations\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Provider extends Model
+class Cart extends Model
 {
     use HasFactory;
 
-    protected $table = 'providers';
-    
+    protected $table = 'carts';
+
     protected $fillable = [
         'user_id',
-        'provider',
-        'provider_id',
-        'provider_token',
+        'item_id',
+        'quantity',
     ];
 
     protected $casts = [];
@@ -26,5 +25,8 @@ class Provider extends Model
         return $this->belongsTo(User::class);
     }
 
-
+    public function item(): BelongsTo
+    {
+        return $this->belongsTo(Item::class);
+    }
 }

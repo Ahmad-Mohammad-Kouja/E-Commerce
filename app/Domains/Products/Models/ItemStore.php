@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class OrderDetail extends Model
+class ItemStore extends Model
 {
     use HasFactory;
 
-    protected $table = 'order_details';
+    protected $table = 'item_stores';
 
     protected $fillable = [
         'item_id',
-        'order_id',
-        'quantity',
+        'store_id',
         'price',
     ];
 
@@ -26,8 +26,13 @@ class OrderDetail extends Model
         return $this->belongsTo(Item::class);
     }
 
-    public function order(): BelongsTo
+    public function store(): BelongsTo
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Store::class);
+    }
+
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class);
     }
 }

@@ -26,11 +26,11 @@ class OrderFactory extends Factory
             'user_id' => User::factory()->create()->id,
             'store_id' => Store::factory()->create()->id,
             'address_id' => Address::factory()->create()->id,
-            'order_status' => fake()->randomElement(['in-progress' , 'delivered']),
+            'order_status' => fake()->randomElement(['in-progress', 'delivered']),
             'payment_id' => $payment->id,
-            'delivery_type' => fake()->randomElement(['delivery' , 'pickup']),
+            'delivery_type' => fake()->randomElement(['delivery', 'pickup']),
             'time_delivery' => fake()->time(),
-            'current_location' => fake()->longitude() . ',' . fake()->latitude(),
+            'current_location' => fake()->longitude().','.fake()->latitude(),
         ];
     }
 }

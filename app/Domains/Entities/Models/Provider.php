@@ -1,30 +1,25 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Entities\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Rate extends Model
+class Provider extends Model
 {
     use HasFactory;
 
-    protected $table = 'rates';
+    protected $table = 'providers';
 
     protected $fillable = [
         'user_id',
-        'item_id',
-        'content',
-        'rating',
+        'provider',
+        'provider_id',
+        'provider_token',
     ];
 
     protected $casts = [];
-
-    public function item(): BelongsTo
-    {
-        return $this->belongsTo(Item::class);
-    }
 
     public function user(): BelongsTo
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Stores\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +11,7 @@ class Feedback extends Model
     use HasFactory;
 
     protected $table = 'feedbacks';
-    
+
     protected $fillable = [
         'user_id',
         'store_id',
@@ -29,5 +29,4 @@ class Feedback extends Model
     {
         return $this->belongsTo(Store::class);
     }
-
 }

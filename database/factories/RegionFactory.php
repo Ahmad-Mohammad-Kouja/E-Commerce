@@ -20,7 +20,7 @@ class RegionFactory extends Factory
         return [
             'city_id' => City::factory()->create()->id,
             'name' => fake()->country(),
-            'delivery_fee' => fake()->numberBetween(2 , 100),
+            'delivery_fee' => fake()->numberBetween(2, 100),
         ];
     }
 }

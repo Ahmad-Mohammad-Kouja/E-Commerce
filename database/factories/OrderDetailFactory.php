@@ -19,10 +19,11 @@ class OrderDetailFactory extends Factory
     public function definition(): array
     {
         $order = Order::factory()->create();
+
         return [
             'order_id' => $order->id,
             'item_id' => Item::factory()->create()->id,
-            'quantity' => fake()->randomNumber(1 , 100),
+            'quantity' => fake()->randomNumber(1, 100),
             'price' => fake()->randomNumber(),
         ];
     }

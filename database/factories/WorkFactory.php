@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Store;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +17,8 @@ class WorkFactory extends Factory
     public function definition(): array
     {
         return [
-            'day' => fake()->randomElement(['Sat' , 'Sun' , 'Mon' , 'Tue' , 'Wen' , 'Thu' , 'Fri']),
-            'working' => fake()->randomNumber([0 , 1]),
+            'day' => fake()->randomElement(['Sat', 'Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri']),
+            'working' => fake()->randomNumber([0, 1]),
             'from' => fake()->time(),
             'to' => fake()->time(),
         ];

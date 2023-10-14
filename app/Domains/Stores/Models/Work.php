@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Stores\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,6 +19,7 @@ class Work extends Model
         'from',
         'to',
     ];
+
     protected $casts = [];
 
     public function store(): BelongsTo

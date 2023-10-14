@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Stores\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,10 +19,10 @@ class Ad extends Model
         'start_date',
         'end_date',
     ];
-    
+
     protected $casts = [
         'start_date' => 'date:Y-m-d',
-        'end_date' => 'date:Y-m-d'
+        'end_date' => 'date:Y-m-d',
     ];
 
     public function store(): BelongsTo

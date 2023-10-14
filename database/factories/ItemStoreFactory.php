@@ -22,6 +22,7 @@ class ItemStoreFactory extends Factory
         $item = Item::factory()->create();
         $store = Store::factory()->create();
         Work::factory()->create(['store_id' => $item->id]);
+
         return [
             'item_id' => $item->id,
             'store_id' => $store->id,

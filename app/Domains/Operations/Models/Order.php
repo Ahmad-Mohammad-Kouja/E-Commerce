@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Operations\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,8 +24,9 @@ class Order extends Model
         'time_delivery',
         'current_location',
     ];
+
     protected $casts = [
-        'time_delivery' => 'datetime'
+        'time_delivery' => 'datetime',
     ];
 
     public function orderDetails(): HasMany
@@ -47,7 +48,7 @@ class Order extends Model
     {
         return $this->belongsTo(Address::class);
     }
-    
+
     public function payment(): HasOne
     {
         return $this->hasOne(Payment::class);

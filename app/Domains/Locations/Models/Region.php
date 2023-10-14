@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Locations\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,20 +12,19 @@ class Region extends Model
     use HasFactory;
 
     protected $table = 'regions';
-    
+
     protected $fillable = [
         'city_id',
         'name',
         'delivery_fee',
     ];
-    protected $casts = [];
 
+    protected $casts = [];
 
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
     }
-
 
     public function addresses(): HasMany
     {

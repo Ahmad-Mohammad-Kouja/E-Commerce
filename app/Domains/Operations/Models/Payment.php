@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Operations\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,9 +19,8 @@ class Payment extends Model
         'transaction_data',
         'transaction_id',
     ];
-    
-    protected $casts = [];
 
+    protected $casts = [];
 
     public function order(): BelongsTo
     {

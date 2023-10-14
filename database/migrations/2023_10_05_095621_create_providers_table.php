@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('provider');
             $table->string('provider_id');
-            $table->string('provider_token',1000);
+            $table->string('provider_token', 1000);
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
 
         });
