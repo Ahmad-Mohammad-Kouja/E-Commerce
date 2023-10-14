@@ -2,7 +2,13 @@
 
 namespace App\Domains\Entities\Models;
 
-//use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Domains\Locations\Models\Address;
+use App\Domains\Operations\Models\Cart;
+use App\Domains\Operations\Models\Order;
+use App\Domains\Products\Models\Product;
+use App\Domains\Products\Models\Rate;
+use App\Domains\Products\Models\Wishlist;
+use App\Domains\Stores\Models\Feedback;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;

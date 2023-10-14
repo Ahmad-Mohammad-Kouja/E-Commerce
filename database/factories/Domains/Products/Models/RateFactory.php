@@ -7,7 +7,6 @@ use App\Domains\Products\Models\Item;
 use App\Domains\Products\Models\Rate;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-
 class RateFactory extends Factory
 {
     public $model = Rate::class;

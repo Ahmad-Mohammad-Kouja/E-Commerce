@@ -2,14 +2,13 @@
 
 namespace App\Domains\Locations\Models;
 
+use App\Domains\Entities\Models\User;
+use App\Domains\Operations\Models\Order;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-/**
- * @method static take(int $int)
- */
 class Address extends Model
 {
     use HasFactory;

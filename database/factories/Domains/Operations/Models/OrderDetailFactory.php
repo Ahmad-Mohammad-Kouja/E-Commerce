@@ -19,7 +19,7 @@ class OrderDetailFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' =>  Order::factory(),
+            'order_id' => Order::factory(),
             'item_id' => Item::factory(),
             'quantity' => fake()->randomNumber(1, 100),
             'price' => fake()->randomNumber(),

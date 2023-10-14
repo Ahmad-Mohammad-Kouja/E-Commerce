@@ -2,6 +2,7 @@
 
 namespace App\Domains\Locations\Models;
 
+use App\Domains\Stores\Models\Store;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

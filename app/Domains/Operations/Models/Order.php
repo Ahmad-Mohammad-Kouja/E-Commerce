@@ -2,6 +2,9 @@
 
 namespace App\Domains\Operations\Models;
 
+use App\Domains\Entities\Models\User;
+use App\Domains\Locations\Models\Address;
+use App\Domains\Stores\Models\Store;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

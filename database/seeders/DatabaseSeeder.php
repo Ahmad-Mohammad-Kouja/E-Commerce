@@ -2,24 +2,23 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Ad;
-use App\Models\Address;
-use App\Models\Admin;
-use App\Models\Cart;
-use App\Models\Category;
-use App\Models\City;
-use App\Models\ContactInfo;
-use App\Models\Feedback;
-use App\Models\ItemStore;
-use App\Models\Offer;
-use App\Models\OrderDetail;
-use App\Models\Product;
-use App\Models\Provider;
-use App\Models\Rate;
-use App\Models\Region;
-use App\Models\User;
-use App\Models\Wishlist;
+use App\Domains\Entities\Models\Admin;
+use App\Domains\Entities\Models\Provider;
+use App\Domains\Entities\Models\User;
+use App\Domains\Locations\Models\Address;
+use App\Domains\Locations\Models\City;
+use App\Domains\Locations\Models\Region;
+use App\Domains\Operations\Models\Cart;
+use App\Domains\Operations\Models\OrderDetail;
+use App\Domains\Products\Models\Category;
+use App\Domains\Products\Models\ItemStore;
+use App\Domains\Products\Models\Offer;
+use App\Domains\Products\Models\Product;
+use App\Domains\Products\Models\Rate;
+use App\Domains\Products\Models\Wishlist;
+use App\Domains\Stores\Models\Ad;
+use App\Domains\Stores\Models\ContactInfo;
+use App\Domains\Stores\Models\Feedback;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,13 +28,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         $this->call([
             User::factory(100)->create(),
             Provider::factory(25)->create(),

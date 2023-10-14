@@ -2,6 +2,7 @@
 
 namespace App\Domains\Products\Models;
 
+use App\Domains\Entities\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
