@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->date('birthday')->nullable();
             $table->string('email')->unique();
-            $table->enum('gender', ['male','female'])->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
