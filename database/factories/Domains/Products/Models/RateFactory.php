@@ -1,16 +1,17 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Products\Models;
 
-use App\Models\Item;
-use App\Models\User;
+use App\Domains\Entities\Models\User;
+use App\Domains\Products\Models\Item;
+use App\Domains\Products\Models\Rate;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Rat>
- */
+
 class RateFactory extends Factory
 {
+    public $model = Rate::class;
+
     /**
      * Define the model's default state.
      *
@@ -19,8 +20,8 @@ class RateFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create()->id,
-            'item_id' => Item::factory()->create()->id,
+            'user_id' => User::factory(),
+            'item_id' => Item::factory(),
             'content' => fake()->text(),
             'rating' => fake()->randomNumber([1, 2, 3, 4, 5]),
         ];

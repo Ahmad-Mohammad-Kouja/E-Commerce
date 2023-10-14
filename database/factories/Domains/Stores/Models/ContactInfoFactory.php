@@ -1,15 +1,15 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Stores\Models;
 
-use App\Models\Store;
+use App\Domains\Stores\Models\ContactInfo;
+use App\Domains\Stores\Models\Store;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ContactInfo>
- */
 class ContactInfoFactory extends Factory
 {
+    public $model = ContactInfo::class;
+
     /**
      * Define the model's default state.
      *
@@ -18,7 +18,7 @@ class ContactInfoFactory extends Factory
     public function definition(): array
     {
         return [
-            'store_id' => Store::factory()->create()->id,
+            'store_id' => Store::factory(),
             'platform' => fake()->name(),
             'contact' => fake()->word(),
         ];

@@ -1,16 +1,16 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Entities\Models;
 
-use App\Models\User;
+use App\Domains\Entities\Models\Provider;
+use App\Domains\Entities\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Provider>
- */
 class ProviderFactory extends Factory
 {
+    public $model = Provider::class;
+
     /**
      * Define the model's default state.
      *
@@ -20,7 +20,7 @@ class ProviderFactory extends Factory
     {
         return [
             'provider' => fake()->name(),
-            'user_id' => User::factory()->create()->id,
+            'user_id' => User::factory(),
             'provider_id' => fake()->uuid(),
             'provider_token' => Str::random(10),
         ];

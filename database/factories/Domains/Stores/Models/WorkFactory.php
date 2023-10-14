@@ -1,14 +1,14 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Stores\Models;
 
+use App\Domains\Stores\Models\Work;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Work>
- */
 class WorkFactory extends Factory
 {
+    public $model = Work::class;
+
     /**
      * Define the model's default state.
      *

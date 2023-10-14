@@ -1,16 +1,16 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Locations\Models;
 
 use App\Domains\Entities\Models\User;
+use App\Domains\Locations\Models\Address;
 use App\Domains\Locations\Models\Region;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Address>
- */
 class AddressFactory extends Factory
 {
+    public $model = Address::class;
+
     /**
      * Define the model's default state.
      *

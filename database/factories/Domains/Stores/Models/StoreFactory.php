@@ -1,15 +1,15 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Stores\Models;
 
-use App\Models\City;
+use App\Domains\Locations\Models\City;
+use App\Domains\Stores\Models\Store;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Store>
- */
 class StoreFactory extends Factory
 {
+    public $model = Store::class;
+
     /**
      * Define the model's default state.
      *
@@ -19,7 +19,7 @@ class StoreFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'city_id' => City::factory()->create()->id,
+            'city_id' => City::factory(),
         ];
     }
 }

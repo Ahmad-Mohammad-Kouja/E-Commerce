@@ -1,14 +1,14 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Stores\Models;
 
+use App\Domains\Stores\Models\Ad;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ad>
- */
 class AdFactory extends Factory
 {
+    public $model = Ad::class;
+
     /**
      * Define the model's default state.
      *

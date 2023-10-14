@@ -1,15 +1,14 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Products\Models;
 
-use App\Models\Offer;
+use App\Domains\Products\Models\Offer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Offer>
- */
 class OfferFactory extends Factory
 {
+    public $model = Offer::class;
+
     /**
      * Define the model's default state.
      *
@@ -18,7 +17,7 @@ class OfferFactory extends Factory
     public function definition(): array
     {
         return [
-            'item_id' => Offer::factory()->create()->id,
+            'item_id' => Offer::factory(),
             'start_date' => fake()->time(),
             'end_date' => fake()->time(),
             'type' => fake()->randomElement(['percent', 'fixed']),

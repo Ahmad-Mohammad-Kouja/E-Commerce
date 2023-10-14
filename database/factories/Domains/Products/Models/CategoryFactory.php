@@ -1,15 +1,14 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Products\Models;
 
-use App\Models\Category;
+use App\Domains\Products\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
- */
 class CategoryFactory extends Factory
 {
+    public $model = Category::class;
+
     /**
      * Define the model's default state.
      *
@@ -19,16 +18,8 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $categoryId = null;
-
-        $flag = random_int(0, 1);
-
-        if (Category::count() && $flag) {
-            $categoryId = Category::all()->unique()->random()->id;
-        }
-
         return [
-            'parent_id' => $categoryId,
+            'parent_id' => Category::factory(),
             'name' => fake()->name(),
             'description' => fake()->text(),
             'image' => fake()->image(),

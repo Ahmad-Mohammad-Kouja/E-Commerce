@@ -1,16 +1,16 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Stores\Models;
 
-use App\Models\Store;
-use App\Models\User;
+use App\Domains\Entities\Models\User;
+use App\Domains\Stores\Models\Feedback;
+use App\Domains\Stores\Models\Store;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Feedback>
- */
 class FeedbackFactory extends Factory
 {
+    public $model = Feedback::class;
+
     /**
      * Define the model's default state.
      *
@@ -19,8 +19,8 @@ class FeedbackFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create()->id,
-            'store_id' => Store::factory()->create()->id,
+            'user_id' => User::factory(),
+            'store_id' => Store::factory(),
             'message' => fake()->text(),
         ];
     }

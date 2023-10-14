@@ -1,14 +1,14 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Operations\Models;
 
+use App\Domains\Operations\Models\Payment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Payment>
- */
 class PaymentFactory extends Factory
 {
+    public $model = Payment::class;
+
     /**
      * Define the model's default state.
      *

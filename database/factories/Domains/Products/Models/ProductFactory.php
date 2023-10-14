@@ -1,15 +1,15 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domains\Products\Models;
 
-use App\Models\User;
+use App\Domains\Entities\Models\User;
+use App\Domains\Products\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
- */
 class ProductFactory extends Factory
 {
+    public $model = Product::class;
+
     /**
      * Define the model's default state.
      *
@@ -18,7 +18,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create()->id,
+            'user_id' => User::factory(),
             'name' => fake()->name(),
             'description' => fake()->realText(),
             'price' => fake()->randomFloat(),
