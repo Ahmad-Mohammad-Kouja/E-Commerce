@@ -22,6 +22,7 @@ class Store extends Model
     protected $fillable = [
         'name',
         'city_id',
+        'is_main',
     ];
 
     protected $casts = [];
