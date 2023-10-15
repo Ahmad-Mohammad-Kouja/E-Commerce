@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('city_id')->constrained()->onDelete('no action');
+            $table->boolean('is_main')
+                ->default(0)
+                ->comment('0 for not main, 1 then the store is main');
             $table->timestamps();
         });
     }
