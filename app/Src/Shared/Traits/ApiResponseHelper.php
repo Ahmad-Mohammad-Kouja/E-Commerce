@@ -63,7 +63,6 @@ trait ApiResponseHelper
         );
     }
 
-
     public function notFoundResponse(
         ?string $message = null,
         array $headers = []
