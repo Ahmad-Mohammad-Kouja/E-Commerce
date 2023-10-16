@@ -2,12 +2,14 @@
 
 namespace App\Domains\Entities\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     use HasFactory;
+    use HasApiTokens;
 
     protected $table = 'admins';
 
@@ -23,4 +25,11 @@ class Admin extends Model
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function findByEmail(string $email): ?Admin
+    {
+        return self::query()
+            ->where('email', $email)
+            ->first();
+    }
 }
