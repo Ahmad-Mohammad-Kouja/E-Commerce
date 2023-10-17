@@ -5,6 +5,7 @@ namespace App\Src\Admin\Store\Controllers;
 use App\Domains\Stores\Models\Store;
 use App\Http\Controllers\Controller;
 use App\Src\Admin\Store\Requests\StoreRequest;
+use App\Src\Admin\Store\Requests\UpdateRequest;
 use App\Src\Admin\Store\Resources\StoreGridResource;
 use App\Src\Admin\Store\Resources\StoreUpdateResource;
 use App\Src\Shared\Traits\ApiResponseHelper;
@@ -52,13 +53,15 @@ class StoreController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreRequest $request, Store $store)
+    public function update(UpdateRequest $request, Store $store)
     {
-        if ($request->input('is_main') == 1) {
-            $mainStore = Store::where('is_main', 1)->first();
-            $mainStore->update(['is_main' => 0]);
+        $data = $request->validated();
+        if ($data('is_main') && ! $store->is_main) {
+            Store::where('is_main', 1)->update(['is_main' => 0]);
+        } elseif (! $data('is_main') && $store->is_main) {
+            unset($data['is_main']);
         }
-        $store->update($request->validated());
+        $store->update($data);
 
         return $this->successResponse(new StoreUpdateResource($store), 'updated');
     }

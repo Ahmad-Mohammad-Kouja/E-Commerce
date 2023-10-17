@@ -3,8 +3,9 @@
 namespace App\Src\Admin\Store\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +23,13 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255|unique:stores,name',
-            'city_id' => 'required|exists:cities,id',
-            'is_main' => 'sometimes|boolean',
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('stores', 'name')->ignore($this->store->id),
+            ],
+            'city_id' => ['required', Rule::exists('cities', 'id')],
+            'is_main' => ['sometimes', 'boolean'],
         ];
     }
 }
