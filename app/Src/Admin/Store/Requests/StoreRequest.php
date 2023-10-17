@@ -32,7 +32,7 @@ class StoreRequest extends FormRequest
             case 'PUT':
             case 'PATCH':
                 return [
-                    'name' => 'required|max:255|unique:stores,name,'.$this->route()->country->id,
+                    'name' => 'required|max:255|unique:stores,name,'.$this->route()->store->id,
                     'city_id' => 'required|exists:cities,id',
                     'is_main' => 'sometimes|boolean',
                 ];

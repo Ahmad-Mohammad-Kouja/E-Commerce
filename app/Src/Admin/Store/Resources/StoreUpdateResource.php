@@ -5,7 +5,7 @@ namespace App\Src\Admin\Store\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GridStoreResource extends JsonResource
+class StoreUpdateResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,7 @@ class GridStoreResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'cityName' => $this->city->name,
+            'city_id' => $this->city_id,
             'main' => $this->is_main,
         ];
     }

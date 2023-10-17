@@ -25,7 +25,9 @@ class Store extends Model
         'is_main',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'is_main' => 'boolean',
+    ];
 
     public function ads(): HasMany
     {

@@ -5,15 +5,16 @@ namespace App\Src\Admin\Store\Controllers;
 use App\Domains\Stores\Models\Store;
 use App\Http\Controllers\Controller;
 use App\Src\Admin\Store\Requests\StoreRequest;
-use App\Src\Admin\Store\Resources\GridStoreResource;
+use App\Src\Admin\Store\Resources\StoreGridResource;
+use App\Src\Admin\Store\Resources\StoreUpdateResource;
+use App\Src\Shared\Traits\ApiResponseHelper;
 
 class StoreController extends Controller
 {
-    protected $store;
+    use ApiResponseHelper;
 
-    public function __construct(Store $store)
+    public function __construct(protected Store $store)
     {
-        $this->store = $store;
     }
 
     /**
@@ -24,7 +25,7 @@ class StoreController extends Controller
         try {
             $stores = $this->store->all();
 
-            return response()->json(GridStoreResource::collection($stores));
+            return $this->successResponse(StoreGridResource::collection($stores), 'success');
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
@@ -37,37 +38,38 @@ class StoreController extends Controller
     {
         $store = $this->store->create($request->validated());
 
-        return response()->json(new GridStoreResource($store), 201);
+        return $this->successResponse(new StoreGridResource($store), 'success');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Store $store)
     {
-        $store = $this->store->find($id);
-
-        return response()->json(new GridStoreResource($store));
+        return $this->successResponse(new StoreGridResource($store), 'success');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreRequest $request, string $id)
+    public function update(StoreRequest $request, Store $store)
     {
-        $store = $this->store->find($id);
+        if ($request->input('is_main') == 1) {
+            $mainStore = Store::where('is_main', 1)->first();
+            $mainStore->update(['is_main' => 0]);
+        }
         $store->update($request->validated());
 
-        return response()->json(new GridStoreResource($store));
+        return $this->successResponse(new StoreUpdateResource($store), 'updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Store $store)
     {
-        $this->store->destroy($id);
+        $store->delete();
 
-        return response()->json(null, 204);
+        $this->successResponse(null, 'success');
     }
 }
