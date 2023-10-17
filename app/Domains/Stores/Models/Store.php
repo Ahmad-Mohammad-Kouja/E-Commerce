@@ -63,4 +63,10 @@ class Store extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    // Helper Methods
+    public function removeMainStore()
+    {
+        return self::where('is_main', 1)->update(['is_main' => 0]);
+    }
 }

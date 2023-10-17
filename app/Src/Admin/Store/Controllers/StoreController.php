@@ -57,7 +57,7 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         if ($data('is_main') && ! $store->is_main) {
-            Store::where('is_main', 1)->update(['is_main' => 0]);
+            $this->store->removeMainStore();
         } elseif (! $data('is_main') && $store->is_main) {
             unset($data['is_main']);
         }
