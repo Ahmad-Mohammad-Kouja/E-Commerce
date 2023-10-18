@@ -1,6 +1,6 @@
 <?php
 
-use App\Src\Admin\Controllers\CategoriesControllers;
+use App\Src\Admin\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('category', CategoriesControllers::class);
+Route::apiResource('categories', CategoryController::class);

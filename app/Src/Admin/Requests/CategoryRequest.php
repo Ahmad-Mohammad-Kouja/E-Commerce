@@ -22,7 +22,7 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'parent_id' => ['nullable', 'integer'],
+            'parent_id' => ['nullable', 'integer', 'exists:categories,id'],
             'name' => ['string', 'required'],
             'description' => ['nullable', 'string'],
             'status' => ['required', 'string'],

@@ -6,7 +6,7 @@ use App\Domains\Products\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Src\Admin\Requests\CategoryRequest;
 
-class CategoriesControllers extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,14 +23,14 @@ class CategoriesControllers extends Controller
      */
     public function store(CategoryRequest $request)
     {
+        if (isset($request->parent_id)) {
+            $category = Category::where([['id', $request->parent_id], ['parent_id', null]])->first();
+            if (count($category) == 0) {
+                return response()->json();
+            }
+        }
         try {
-            Category::create([
-                'parent_id' => $request->parent_id,
-                'name' => $request->name,
-                'description' => $request->description,
-                'status' => $request->status,
-                'image' => $request->image, //string
-            ]);
+            Category::create($request->validated());
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
@@ -47,16 +47,10 @@ class CategoriesControllers extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CategoryRequest $request, string $id)
+    public function update(CategoryRequest $request, Category $category)
     {
         try {
-            $category = Category::find($id)->update([
-                'parent_id' => $request->parent_id,
-                'name' => $request->name,
-                'description' => $request->description,
-                'status' => $request->status,
-                'image' => $request->image,
-            ]);
+            $category->update($request->validated());
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
