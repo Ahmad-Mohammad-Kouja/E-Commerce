@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "bensampo/laravel-enum": "^6.6",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
@@ -63,7 +64,8 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true,
-            "phpro/grumphp-shim": true
+            "phpro/grumphp-shim": true,
+            "phpro/grumphp": true
         }
     },
     "minimum-stability": "stable",
