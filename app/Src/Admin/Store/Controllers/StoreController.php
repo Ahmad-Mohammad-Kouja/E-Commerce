@@ -8,6 +8,7 @@ use App\Src\Admin\Store\Requests\StoreStoreRequest;
 use App\Src\Admin\Store\Requests\UpdateRequest;
 use App\Src\Admin\Store\Resources\StoreGridResource;
 use App\Src\Admin\Store\Resources\StoreUpdateResource;
+use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
@@ -18,10 +19,11 @@ class StoreController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $stores = $this->store->all();
+            $term = $request->query('term', '');
+            $stores = $this->store->Search($term)->get();
 
             return $this->successResponse(StoreGridResource::collection($stores), 'success');
         } catch (\Throwable $th) {
@@ -36,7 +38,7 @@ class StoreController extends Controller
     {
         $store = $this->store->create($request->validated());
 
-        return $this->successResponse(new StoreGridResource($store), 'success');
+        return $this->createdResponse(new StoreGridResource($store), 'success');
     }
 
     /**

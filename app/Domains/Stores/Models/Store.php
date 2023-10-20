@@ -5,6 +5,7 @@ namespace App\Domains\Stores\Models;
 use App\Domains\Locations\Models\City;
 use App\Domains\Operations\Models\Order;
 use App\Domains\Products\Models\ItemStore;
+use App\Src\Shared\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,6 +17,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Store extends Model
 {
     use HasFactory;
+    use Searchable;
+
+    protected $searchable = [
+        'name',
+        'city.name',
+    ];
 
     protected $table = 'stores';
 
