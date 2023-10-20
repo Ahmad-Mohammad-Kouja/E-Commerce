@@ -4,7 +4,7 @@ namespace App\Src\Admin\Products\Controllers;
 
 use App\Domains\Products\Models\Item;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ItemRequest;
+use App\Src\Admin\Products\Requests\ItemRequest;
 use App\Src\Admin\Products\Resources\ItemGrideResource;
 use App\Src\Shared\Traits\ApiResponseHelper;
 use Spatie\QueryBuilder\QueryBuilder;
