@@ -12,7 +12,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders =  Order::paginate();
+        $orders = Order::paginate();
 
         return $orders;
     }
@@ -30,7 +30,7 @@ class OrderController extends Controller
             'payment_status' => $request->payment_status,
             'delivery_type' => $request->delivery_type,
             'time_delivery' => $request->time_delivery,
-            'current_location' => $request->current_location
+            'current_location' => $request->current_location,
         ]);
 
         //return $msg = "order has been created successfully"
@@ -57,7 +57,7 @@ class OrderController extends Controller
             'payment_status' => $request->payment_status,
             'delivery_type' => $request->delivery_type,
             'time_delivery' => $request->time_delivery,
-            'current_location' => $request->current_location
+            'current_location' => $request->current_location,
         ]);
         //return $msg = "order has been updated successfully"
     }
@@ -67,7 +67,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-         $order->delete();
-         //return $msg = "order has been deleted successfully"
+        $order->delete();
+        //return $msg = "order has been deleted successfully"
     }
 }

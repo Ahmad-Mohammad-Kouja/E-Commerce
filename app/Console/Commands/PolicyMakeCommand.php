@@ -87,17 +87,17 @@ class PolicyMakeCommand extends ConsolePolicyMakeCommand
         $app = $this->argument('app');
         if (in_array(Str::lower($app), AppTypesEnum::getValues()) === false) {
             throw new InvalidArgumentException(
-                'please choose one of the apps ' . implode(',', AppTypesEnum::getValues())
+                'please choose one of the apps '.implode(',', AppTypesEnum::getValues())
             );
         }
 
         $group = $this->argument('group');
         if (in_array(Str::lower($group), DomainTypesEnum::getValues()) === false) {
             throw new InvalidArgumentException(
-                'please choose one of the domains ' . implode(',', DomainTypesEnum::getValues())
+                'please choose one of the domains '.implode(',', DomainTypesEnum::getValues())
             );
         }
 
-        return $rootNamespace . '\Src\\' . (Str::title($app)) . '\\' .  (Str::title($group)) . '\\Policies';
+        return $rootNamespace.'\Src\\'.(Str::title($app)).'\\'.(Str::title($group)).'\\Policies';
     }
 }

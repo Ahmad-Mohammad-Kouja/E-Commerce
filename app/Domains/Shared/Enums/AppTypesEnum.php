@@ -9,5 +9,6 @@ use BenSampo\Enum\Enum;
 final class AppTypesEnum extends Enum
 {
     public const ADMIN = 'admin';
+
     public const USER = 'user';
 }

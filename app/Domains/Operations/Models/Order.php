@@ -20,7 +20,8 @@ class Order extends Model
 
     protected $table = 'orders';
 
-    const DEFAULT_STATUS = "active";
+    const DEFAULT_STATUS = 'active';
+
     protected $fillable = [
         'user_id',
         'store_id',

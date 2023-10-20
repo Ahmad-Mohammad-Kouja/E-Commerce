@@ -77,10 +77,10 @@ class ControllerMakeCommand extends ConsoleControllerMakeCommand
         $app = $this->argument('app');
         if (in_array($app, AppTypesEnum::getValues()) === false) {
             throw new InvalidArgumentException(
-                'please choose one of the apps ' . implode(',', AppTypesEnum::getValues())
+                'please choose one of the apps '.implode(',', AppTypesEnum::getValues())
             );
         }
 
-        return $rootNamespace . '\Src\\' . $app . '\\Controllers';
+        return $rootNamespace.'\Src\\'.$app.'\\Controllers';
     }
 }
