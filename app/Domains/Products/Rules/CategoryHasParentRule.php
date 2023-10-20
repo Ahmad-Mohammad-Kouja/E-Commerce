@@ -15,8 +15,8 @@ class CategoryHasParentRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $parent = Category::where('id', $value)->whereNull('parent_id')->first();
-        if (empty($parent)) {
+        $parent = Category::where('id', $value)->whereNull('parent_id')->exists();
+        if (! $parent) {
             $fail('The :attribute must be doesn\'t have parent_id.');
         }
     }

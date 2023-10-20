@@ -30,9 +30,10 @@ class CategoryController extends Controller
         }
     }
 
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
+        return $this->createdResponse(new CategoryGrideResource($category), 'success');
+
     }
 
     public function update(CategoryRequest $request, Category $category)
@@ -40,16 +41,16 @@ class CategoryController extends Controller
         try {
             $category->update($request->validated());
 
-            return $this->successResponse(new CategoryGrideResource($category), 'created');
+            return $this->successResponse(new CategoryGrideResource($category), 'updated');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
     }
 
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
         try {
-            Category::find($id)->delete();
+            $category->delete();
 
             return $this->deletedResponse('deleted');
         } catch (\Throwable $th) {

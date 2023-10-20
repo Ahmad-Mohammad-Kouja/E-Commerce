@@ -2,8 +2,8 @@
 
 namespace App\Src\Admin\Products\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Domains\Products\Rules\CategoryHasParentRule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryRequest extends FormRequest
 {
@@ -23,7 +23,7 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'parent_id' => ['nullable', 'integer', 'exists:categories,id',new CategoryHasParentRule],
+            'parent_id' => ['nullable', 'integer', new CategoryHasParentRule],
             'name' => ['string', 'required'],
             'description' => ['nullable', 'string'],
             'status' => ['required', 'string'],
