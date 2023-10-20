@@ -31,10 +31,13 @@ class ItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'description' => 'string',
-            'weight' => 'int',
-            'status' => Rule::in(['archived' , 'active']),
+            'category_id' => ['required', 'exists:categories,id'],
+            'name' => ['required', 'string'],
+            'description' => ['string', 'nullable'],
+            'weight' => ['int', 'required'],
+            'status' => Rule::in(['archived', 'active']),
+            'image' => ['string', 'nullable'],
+            'quantity' => ['int', 'required'],
         ];
     }
 }
