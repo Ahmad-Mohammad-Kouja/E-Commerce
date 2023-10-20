@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\CategoryRequest;
 use App\Src\Admin\Products\Resources\CategoryGrideResource;
 use App\Src\Shared\Traits\ApiResponseHelper;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,9 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::paginate();
+        $categories = QueryBuilder::for(Category::class)
+            ->allowedFilters(['name', 'status'])
+            ->get();
 
         return $this->successResponse(CategoryGrideResource::collection($categories), 'success');
     }
