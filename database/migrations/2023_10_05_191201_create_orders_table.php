@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreignId('store_id')->constrained()->onDelete('no action');
             $table->foreignId('address_id')->constrained()->onDelete('no action');
             $table->foreignId('payment_id')->constrained()->onDelete('no action');
-            $table->enum('order_status',['in-progress', 'delivered']);
-            $table->enum('payment_status',['paid', 'unpaid']);
-            $table->enum('delivery_type',[ 'pickup','delivery']);
+            $table->enum('order_status', ['in-progress', 'delivered']);
+            $table->enum('payment_status', ['paid', 'unpaid']);
+            $table->enum('delivery_type', ['pickup', 'delivery']);
             $table->date('time_delivery');
             $table->string('current_location');
             $table->timestamps();
