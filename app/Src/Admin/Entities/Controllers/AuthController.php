@@ -34,7 +34,9 @@ class AuthController extends Controller
 
     public function logout(): JsonResponse
     {
-        /** @var App\Domains\Entities\Models\Admin $admin */
+        /**
+         * @var App\Domains\Entities\Models\Admin $admin
+         */
         $admin = Auth::guard('sanctum')->user();
         $admin->currentAccessToken()->delete();
 

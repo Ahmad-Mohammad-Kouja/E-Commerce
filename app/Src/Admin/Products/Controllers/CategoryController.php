@@ -38,7 +38,6 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         return $this->successResponse(new CategoryGrideResource($category), 'success');
-
     }
 
     public function update(CategoryRequest $request, Category $category)
