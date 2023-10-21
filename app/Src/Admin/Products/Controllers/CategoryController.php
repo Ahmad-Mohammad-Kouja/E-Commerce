@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\CategoryRequest;
 use App\Src\Admin\Products\Resources\CategoryGrideResource;
 use App\Src\Shared\Traits\ApiResponseHelper;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CategoryController extends Controller
@@ -16,7 +17,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = QueryBuilder::for(Category::class)
-            ->allowedFilters(['name', 'status'])
+            ->with('parent')
+            ->allowedFilters(['name', AllowedFilter::exact('status')])
             ->get();
 
         return $this->successResponse(CategoryGrideResource::collection($categories), 'success');
@@ -35,7 +37,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        return $this->createdResponse(new CategoryGrideResource($category), 'success');
+        return $this->successResponse(new CategoryGrideResource($category), 'success');
 
     }
 

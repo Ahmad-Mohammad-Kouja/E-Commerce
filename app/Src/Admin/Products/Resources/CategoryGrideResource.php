@@ -21,7 +21,7 @@ class CategoryGrideResource extends JsonResource
             'image' => $this->image,
             'status' => $this->status,
             'parent_id' => $this->parent_id,
-            'parent_name' => ($this->parent_id) ? $this->parent->name : null,
+            'parent_name' => $this->when($this->parent_id, optional($this->parent)->name),
         ];
     }
 }
