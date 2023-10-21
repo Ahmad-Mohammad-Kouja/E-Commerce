@@ -9,6 +9,7 @@ use App\Src\Admin\Store\Requests\UpdateRequest;
 use App\Src\Admin\Store\Resources\StoreGridResource;
 use App\Src\Admin\Store\Resources\StoreUpdateResource;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class StoreController extends Controller
 {
@@ -22,8 +23,9 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         try {
-            $term = $request->query('term', '');
-            $stores = $this->store->Search($term)->get();
+            $stores = QueryBuilder::for($this->store)
+                ->allowedFilters(['name', 'city.name'])
+                ->get();
 
             return $this->successResponse(StoreGridResource::collection($stores), 'success');
         } catch (\Throwable $th) {
