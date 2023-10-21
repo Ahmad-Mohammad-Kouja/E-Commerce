@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\ItemRequest;
 use App\Src\Admin\Products\Resources\ItemGrideResource;
 use App\Src\Shared\Traits\ApiResponseHelper;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ItemController extends Controller
@@ -16,7 +17,8 @@ class ItemController extends Controller
     public function index()
     {
         $items = QueryBuilder::for(Item::class)
-            ->allowedFilters(['name', 'status'])
+            ->with('category')
+            ->allowedFilters(['name', AllowedFilter::exact('status')])
             ->get();
 
         return $this->successResponse(ItemGrideResource::collection($items), 'success');
@@ -36,7 +38,7 @@ class ItemController extends Controller
 
     public function show(Item $item)
     {
-        return $this->createdResponse(new ItemGrideResource($item));
+        return $this->successResponse(new ItemGrideResource($item), 'success');
     }
 
     public function update(ItemRequest $request, Item $item)
