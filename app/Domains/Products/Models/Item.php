@@ -16,7 +16,7 @@ class Item extends Model
 {
     use HasFactory;
 
-    const DEFAULT_STATUS = "active";
+    const DEFAULT_STATUS = 'active';
 
     protected $table = 'items';
 

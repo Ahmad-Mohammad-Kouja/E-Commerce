@@ -2,14 +2,14 @@
 
 namespace App\Domains\Entities\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable
 {
-    use HasFactory;
     use HasApiTokens;
+    use HasFactory;
 
     protected $table = 'admins';
 
