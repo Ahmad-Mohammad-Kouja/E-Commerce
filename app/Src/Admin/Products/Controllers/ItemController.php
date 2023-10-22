@@ -31,7 +31,6 @@ class ItemController extends Controller
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
-
     }
 
     public function show(Item $item)
@@ -45,7 +44,6 @@ class ItemController extends Controller
             $item->update($request->validated());
 
             return $this->successResponse(new ItemGrideResource($item), 'updated');
-
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
