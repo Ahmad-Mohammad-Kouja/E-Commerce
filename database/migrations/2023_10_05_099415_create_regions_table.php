@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->unique(['city_id', 'name']);//two columns together are unique
+            $table->unique(['city_id', 'name']); //two columns together are unique
             $table->integer('delivery_fee');
             $table->timestamps();
         });
