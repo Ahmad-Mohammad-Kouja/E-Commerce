@@ -3,6 +3,7 @@
 namespace App\Src\Admin\Store\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreStoreRequest extends FormRequest
 {
@@ -22,9 +23,9 @@ class StoreStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255|unique:stores,name',
-            'city_id' => 'required|exists:cities,id',
-            'is_main' => 'sometimes|boolean',
+            'name' => ['required', 'max:255', Rule::unique('stores', 'name')],
+            'city_id' => ['required', 'max:255', Rule::exists('cities', 'id')],
+            'is_main' => ['sometimes', 'boolean'],
         ];
     }
 }
