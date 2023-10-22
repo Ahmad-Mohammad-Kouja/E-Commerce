@@ -77,10 +77,10 @@ class EnumMakeCommand extends MakeEnumCommand
         $domain = $this->argument('domain');
         if (in_array(Str::lower($domain), DomainTypesEnum::getValues()) === false) {
             throw new InvalidArgumentException(
-                'please choose one of the domains ' . implode(',', DomainTypesEnum::getValues())
+                'please choose one of the domains '.implode(',', DomainTypesEnum::getValues())
             );
         }
 
-        return $rootNamespace . '\Domains\\' . (Str::title($domain)) . '\\Enums';
+        return $rootNamespace.'\Domains\\'.(Str::title($domain)).'\\Enums';
     }
 }
