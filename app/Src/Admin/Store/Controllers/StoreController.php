@@ -9,6 +9,7 @@ use App\Src\Admin\Store\Requests\UpdateRequest;
 use App\Src\Admin\Store\Resources\StoreGridResource;
 use App\Src\Admin\Store\Resources\StoreUpdateResource;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class StoreController extends Controller
@@ -24,7 +25,8 @@ class StoreController extends Controller
     {
         try {
             $stores = QueryBuilder::for($this->store)
-                ->allowedFilters(['name', 'city.name'])
+                ->with('city')
+                ->allowedFilters(['name', 'city.name', AllowedFilter::exact('main', 'is_main')])
                 ->get();
 
             return $this->successResponse(StoreGridResource::collection($stores), 'success');
