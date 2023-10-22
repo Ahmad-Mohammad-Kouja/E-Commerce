@@ -39,6 +39,7 @@ class ItemController extends Controller
     public function show(Item $item)
     {
         return $this->successResponse(new ItemGrideResource($item), 'success');
+
     }
 
     public function update(ItemRequest $request, Item $item)
