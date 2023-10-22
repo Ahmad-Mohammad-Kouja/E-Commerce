@@ -37,6 +37,19 @@ trait ApiResponseHelper
         );
     }
 
+    public function deletedResponse(
+        string $message = null,
+        array $headers = []
+    ): JsonResponse {
+        return $this->jsonResponse(
+            [
+                'message' => $message,
+            ],
+            Response::HTTP_NO_CONTENT,
+            $headers
+        );
+    }
+
     public function failedResponse(
         string $message = null,
         array $headers = []
