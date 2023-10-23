@@ -71,6 +71,6 @@ class StoreController extends Controller
     {
         $store->delete();
 
-        return $this->successResponse(null, 'success');
+        return $this->deletedResponse('deleted successful');
     }
 }
