@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 /**
  * @method static take(int $int)
@@ -68,5 +70,12 @@ class Store extends Model
     public function removeMainStore()
     {
         return self::where('is_main', 1)->update(['is_main' => 0]);
+    }
+
+    public function adminGetStores()
+    {
+        return QueryBuilder::for(Store::class)
+            ->with('city')
+            ->allowedFilters(['name', 'city.name', AllowedFilter::exact('main', 'is_main')]);
     }
 }
