@@ -72,7 +72,7 @@ class Store extends Model
         return self::where('is_main', 1)->update(['is_main' => 0]);
     }
 
-    public function adminGetStores()
+    public function getStores()
     {
         return QueryBuilder::for(Store::class)
             ->with('city')
