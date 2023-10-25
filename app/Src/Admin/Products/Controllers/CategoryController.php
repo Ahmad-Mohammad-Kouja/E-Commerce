@@ -7,19 +7,18 @@ use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\CategoryRequest;
 use App\Src\Admin\Products\Resources\CategoryGrideResource;
 use App\Src\Shared\Traits\ApiResponseHelper;
-use Spatie\QueryBuilder\AllowedFilter;
-use Spatie\QueryBuilder\QueryBuilder;
 
 class CategoryController extends Controller
 {
     use ApiResponseHelper;
 
+    public function __construct(protected Category $category)
+    {
+    }
+
     public function index()
     {
-        $categories = QueryBuilder::for(Category::class)
-            ->with('parent')
-            ->allowedFilters(['name', AllowedFilter::exact('status')])
-            ->get();
+        $categories = $this->category->getForGride()->get();
 
         return $this->successResponse(CategoryGrideResource::collection($categories), 'success');
     }
@@ -27,7 +26,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         try {
-            $category = Category::create($request->validated());
+            $category = $this->category->create($request->validated());
 
             return $this->createdResponse(new CategoryGrideResource($category), 'created');
         } catch (\Throwable $th) {

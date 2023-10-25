@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 /**
  * @method static count()
@@ -39,5 +41,12 @@ class Category extends Model
     public function items(): HasMany
     {
         return $this->hasMany(Item::class);
+    }
+
+    public function getForGride()
+    {
+        return QueryBuilder::for(Category::class)
+            ->with('parent')
+            ->allowedFilters(['name', AllowedFilter::exact('status')]);
     }
 }
