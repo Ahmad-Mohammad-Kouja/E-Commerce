@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->double('weight');
+            $table->unsignedDouble('weight');
             $table->unsignedInteger('quantity');
             $table->string('status');
             $table->timestamps();

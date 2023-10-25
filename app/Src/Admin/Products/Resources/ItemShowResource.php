@@ -5,7 +5,7 @@ namespace App\Src\Admin\Products\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ItemGrideResource extends JsonResource
+class ItemShowResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,12 @@ class ItemGrideResource extends JsonResource
     {
         return [
             'name' => $this->name,
+            'description' => $this->description,
             'image' => $this->image,
             'weight' => $this->weight,
             'quantity' => $this->quantity,
             'status' => $this->status,
-            'category' => ['id' => $this->category->id, 'name' => $this->category->name],
+            'category_id' => $this->category->id,
         ];
     }
 }

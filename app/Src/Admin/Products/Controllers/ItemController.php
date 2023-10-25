@@ -6,20 +6,17 @@ use App\Domains\Products\Models\Item;
 use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\ItemRequest;
 use App\Src\Admin\Products\Resources\ItemGrideResource;
-use App\Src\Shared\Traits\ApiResponseHelper;
-use Spatie\QueryBuilder\AllowedFilter;
-use Spatie\QueryBuilder\QueryBuilder;
+use App\Src\Admin\Products\Resources\ItemShowResource;
 
 class ItemController extends Controller
 {
-    use ApiResponseHelper;
+    public function __construct(protected Item $item)
+    {
+    }
 
     public function index()
     {
-        $items = QueryBuilder::for(Item::class)
-            ->with('category')
-            ->allowedFilters(['name', AllowedFilter::exact('status')])
-            ->get();
+        $items = $this->item->getForGride()->get();
 
         return $this->successResponse(ItemGrideResource::collection($items), 'success');
     }
@@ -27,18 +24,17 @@ class ItemController extends Controller
     public function store(ItemRequest $request)
     {
         try {
-            $item = Item::create($request->validated());
+            $item = $this->item->create($request->validated());
 
             return $this->createdResponse(new ItemGrideResource($item), 'created');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
-
     }
 
     public function show(Item $item)
     {
-        return $this->successResponse(new ItemGrideResource($item), 'success');
+        return $this->successResponse(new ItemShowResource($item), 'success');
     }
 
     public function update(ItemRequest $request, Item $item)
@@ -47,7 +43,6 @@ class ItemController extends Controller
             $item->update($request->validated());
 
             return $this->successResponse(new ItemGrideResource($item), 'updated');
-
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }

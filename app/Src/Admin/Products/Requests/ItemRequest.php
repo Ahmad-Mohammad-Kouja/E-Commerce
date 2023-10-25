@@ -2,8 +2,9 @@
 
 namespace App\Src\Admin\Products\Requests;
 
+use App\Domains\Products\Enums\ItemStatusEnum;
+use BenSampo\Enum\Rules\EnumKey;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 /**
  * @property mixed $name
@@ -34,10 +35,10 @@ class ItemRequest extends FormRequest
             'category_id' => ['required', 'exists:categories,id'],
             'name' => ['required', 'string'],
             'description' => ['string', 'nullable'],
-            'weight' => ['int', 'required'],
-            'status' => Rule::in(['archived', 'active']),
+            'weight' => ['numeric', 'required', 'min:0'],
+            'status' => [new EnumKey(ItemStatusEnum::class)],
             'image' => ['string', 'nullable'],
-            'quantity' => ['int', 'required'],
+            'quantity' => ['int', 'required', 'min:0'],
         ];
     }
 }
