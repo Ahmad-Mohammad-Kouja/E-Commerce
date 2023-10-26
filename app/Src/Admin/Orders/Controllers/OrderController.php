@@ -21,14 +21,13 @@ class OrderController extends Controller
     public function index(): JsonResponse
     {
         $orders = QueryBuilder::for(Order::class)
-            ->join('users' , 'orders.user_id' , 'user.id')
-            ->join('stores' , 'orders.store_id' , 'stores.id')
-            ->join('addresses' , 'orders.address_id', 'addresses.id')
+            ->join('users', 'orders.user_id', 'user.id')
+            ->join('stores', 'orders.store_id', 'stores.id')
+            ->join('addresses', 'orders.address_id', 'addresses.id')
             ->allowedFilters([
                 'users.name', 'stores.name' , 'addresses.name' ,
                 'payment_id' , 'order_status' , 'payment_status' ,
-                'delivery_type' , 'time_delivery']
-            )->get();
+                'delivery_type' , 'time_delivery'])->get();
 
         return $this->successResponse(OrderGridResource::collection($orders), 'success');
     }

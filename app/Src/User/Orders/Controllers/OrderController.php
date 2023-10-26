@@ -21,7 +21,7 @@ class OrderController extends Controller
     public function index(): JsonResponse
     {
         $user_id = Auth::id();
-        $orders = Order::where('user_id' , $user_id);
+        $orders = Order::where('user_id', $user_id);
         return $this->successResponse(OrderGridResource::collection($orders), 'success');
     }
 

@@ -28,24 +28,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            User::factory(100)->create(),
-            Provider::factory(25)->create(),
-            City::factory(25)->create(),
-            Region::factory(25)->create(),
-            Address::factory(25)->create(),
-            Category::factory(20)->create(),
-            Admin::factory(3)->create(),
-            Product::factory(100)->create(),
-            ItemStore::factory(100)->create(),
-            Wishlist::factory(25)->create(),
-            Rate::factory(25)->create(),
-            Offer::factory(25)->create(),
-            Feedback::factory(50)->create(),
-            Ad::factory(10)->create(),
-            Cart::factory(15)->create(),
-            ContactInfo::factory(10)->create(),
-            OrderDetail::factory(25)->create(),
-        ]);
+            User::factory(100)->create();
+            Provider::factory(25)->create();
+            City::factory(25)->create();
+            Region::factory(25)->create();
+            Address::factory(25)->create();
+            Category::factory(20)->create();
+            Admin::factory(3)->create();
+            Product::factory(100)->create();
+            ItemStore::factory(100)->create();
+            Wishlist::factory(25)->create();
+            Rate::factory(25)->create();
+            Offer::factory(25)->create();
+            Feedback::factory(50)->create();
+            Ad::factory(10)->create();
+            Cart::factory(15)->create();
+            ContactInfo::factory(10)->create();
+            OrderDetail::factory(25)->create();
     }
 }
