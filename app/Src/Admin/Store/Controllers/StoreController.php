@@ -22,7 +22,7 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         try {
-            $stores = $this->store->getStores()->get();
+            $stores = $this->store->getForGrid();
 
             return $this->successResponse(StoreGridResource::collection($stores), 'success');
         } catch (\Throwable $th) {

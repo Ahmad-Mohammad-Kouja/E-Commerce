@@ -72,10 +72,11 @@ class Store extends Model
         return self::where('is_main', 1)->update(['is_main' => 0]);
     }
 
-    public function getStores()
+    public function getForGrid()
     {
         return QueryBuilder::for(Store::class)
             ->with('city')
-            ->allowedFilters(['name', 'city.name', AllowedFilter::exact('main', 'is_main')]);
+            ->allowedFilters(['name', 'city.name', AllowedFilter::exact('main', 'is_main')])
+            ->get();
     }
 }
