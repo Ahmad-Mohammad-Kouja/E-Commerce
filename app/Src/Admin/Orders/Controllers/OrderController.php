@@ -9,6 +9,7 @@ use App\Src\Admin\Orders\Resources\OrderGridResource;
 use App\Src\Shared\Traits\ApiResponseHelper;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 use Throwable;
 
 class OrderController extends Controller
@@ -19,22 +20,17 @@ class OrderController extends Controller
      */
     public function index(): JsonResponse
     {
-        $orders = Order::paginate();
-        return $this->successResponse(OrderGridResource::collection($orders) , 'success');
-    }
+        $orders = QueryBuilder::for(Order::class)
+            ->join('users' , 'orders.user_id' , 'user.id')
+            ->join('stores' , 'orders.store_id' , 'stores.id')
+            ->join('addresses' , 'orders.address_id', 'addresses.id')
+            ->allowedFilters([
+                'users.name', 'stores.name' , 'addresses.name' ,
+                'payment_id' , 'order_status' , 'payment_status' ,
+                'delivery_type' , 'time_delivery']
+            )->get();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(OrderRequest $request): JsonResponse
-    {
-        try {
-            $order = Order::create($request->validated());
-
-            return $this->createdResponse(new OrderGridResource($order) , 'created');
-        }catch (Throwable $th){
-            return $this->failedResponse($th->getMessage());
-        }
+        return $this->successResponse(OrderGridResource::collection($orders), 'success');
     }
 
     /**
@@ -42,21 +38,7 @@ class OrderController extends Controller
      */
     public function show(Order $order): JsonResponse
     {
-        return $this->createdResponse(new OrderGridResource());
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(OrderRequest $request, Order $order): JsonResponse
-    {
-        try {
-            $order->update($request->validated());
-
-            return $this->successResponse(new OrderGridResource($order) , 'updated');
-        }catch (Throwable $th){
-            return $this->failedResponse($th->getMessage());
-        }
+        return $this->createdResponse(new OrderGridResource($order));
     }
 
     /**
@@ -68,7 +50,7 @@ class OrderController extends Controller
             $order->delete();
 
             return $this->deletedResponse('deleted');
-        }catch (Throwable $th){
+        } catch (Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
     }
