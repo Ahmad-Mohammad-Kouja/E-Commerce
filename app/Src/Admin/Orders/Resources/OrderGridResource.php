@@ -3,6 +3,7 @@
 namespace App\Src\Admin\Orders\Resources;
 
 use App\Src\Admin\Stores\Resources\AddressGridResource;
+use App\Src\Admin\Stores\Resources\StoreGridResource;
 use App\Src\User\Entities\Resources\UserGridResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -19,7 +20,7 @@ class OrderGridResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => (new UserGridResource($this->user_id)),
-            'store_id' => (new AddressGridResource($this->store_id)),
+            'store_id' => (new StoreGridResource($this->store_id)),
             'address_id' => (new AddressGridResource($this->address_id)),
             'order_status' => $this->order_status,
             'payment_status' => $this->payment_status,
