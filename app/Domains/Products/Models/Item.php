@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
+/**
+ * @method static create(array $array)
+ */
 class Item extends Model
 {
     use HasFactory;
@@ -24,7 +29,10 @@ class Item extends Model
         'status',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'quantity' => 'float',
+        'weight' => 'float',
+    ];
 
     public function carts(): HasMany
     {
@@ -54,5 +62,13 @@ class Item extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getForGrid()
+    {
+        return QueryBuilder::for(Item::class)
+            ->with('category')
+            ->allowedFilters(['name', AllowedFilter::exact('status')])
+            ->get();
     }
 }

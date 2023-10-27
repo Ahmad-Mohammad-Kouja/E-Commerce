@@ -11,11 +11,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @method static create(array $array)
+ */
 class Order extends Model
 {
     use HasFactory;
 
     protected $table = 'orders';
+
+    const DEFAULT_STATUS = 'active';
 
     protected $fillable = [
         'user_id',

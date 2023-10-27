@@ -5,7 +5,7 @@ namespace App\Src\Admin\Products\Controllers;
 use App\Domains\Products\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\CategoryRequest;
-use App\Src\Admin\Products\Resources\CategoryGrideResource;
+use App\Src\Admin\Products\Resources\CategoryGridResource;
 use App\Src\Shared\Traits\ApiResponseHelper;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -21,7 +21,7 @@ class CategoryController extends Controller
             ->allowedFilters(['name', AllowedFilter::exact('status')])
             ->get();
 
-        return $this->successResponse(CategoryGrideResource::collection($categories), 'success');
+        return $this->successResponse(CategoryGridResource::collection($categories), 'success');
     }
 
     public function store(CategoryRequest $request)
@@ -29,7 +29,7 @@ class CategoryController extends Controller
         try {
             $category = Category::create($request->validated());
 
-            return $this->createdResponse(new CategoryGrideResource($category), 'created');
+            return $this->createdResponse(new CategoryGridResource($category), 'created');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
@@ -37,7 +37,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        return $this->successResponse(new CategoryGrideResource($category), 'success');
+        return $this->successResponse(new CategoryGridResource($category), 'success');
     }
 
     public function update(CategoryRequest $request, Category $category)
@@ -45,7 +45,7 @@ class CategoryController extends Controller
         try {
             $category->update($request->validated());
 
-            return $this->successResponse(new CategoryGrideResource($category), 'updated');
+            return $this->successResponse(new CategoryGridResource($category), 'updated');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
