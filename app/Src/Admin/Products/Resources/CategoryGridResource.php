@@ -5,7 +5,7 @@ namespace App\Src\Admin\Products\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryGrideResource extends JsonResource
+class CategoryGridResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

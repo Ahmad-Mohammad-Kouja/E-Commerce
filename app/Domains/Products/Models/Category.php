@@ -43,10 +43,11 @@ class Category extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function getForGride()
+    public function getForGrid()
     {
         return QueryBuilder::for(Category::class)
             ->with('parent')
-            ->allowedFilters(['name', AllowedFilter::exact('status')]);
+            ->allowedFilters(['name', AllowedFilter::exact('status')])
+            ->get();
     }
 }
