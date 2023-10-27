@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 /**
  * @method static take(int $int)
@@ -22,9 +24,12 @@ class Store extends Model
     protected $fillable = [
         'name',
         'city_id',
+        'is_main',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'is_main' => 'boolean',
+    ];
 
     public function ads(): HasMany
     {
@@ -59,5 +64,19 @@ class Store extends Model
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
+    }
+
+    // Helper Methods
+    public function removeMainStore()
+    {
+        return self::where('is_main', 1)->update(['is_main' => 0]);
+    }
+
+    public function getForGrid()
+    {
+        return QueryBuilder::for(Store::class)
+            ->with('city')
+            ->allowedFilters(['name', 'city.name', AllowedFilter::exact('main', 'is_main')])
+            ->get();
     }
 }

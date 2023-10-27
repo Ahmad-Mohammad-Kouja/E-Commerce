@@ -30,7 +30,6 @@ class RouteServiceProvider extends ServiceProvider
                 return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
             }
         );
-
         $this->routes(
             function () {
                 Route::middleware('api')
@@ -53,6 +52,10 @@ class RouteServiceProvider extends ServiceProvider
                 Route::middleware('api')
                     ->prefix('admin')
                     ->group(base_path('routes/admin/entities.php'));
+
+                Route::middleware('api')
+                    ->prefix('admin')
+                    ->group(base_path('routes/admin/store.php'));
             }
         );
     }
