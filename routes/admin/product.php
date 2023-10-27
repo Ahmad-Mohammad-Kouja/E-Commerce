@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Src\Admin\Products\Controllers\CategoryController;
+use App\Src\Admin\Products\Controllers\ItemController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +14,7 @@ use App\Src\Admin\Products\Controllers\CategoryController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::apiResource('categories', CategoryController::class);
+Route::apiResources([
+    'items' => ItemController::class,
+    'categories' => CategoryController::class,
+]);

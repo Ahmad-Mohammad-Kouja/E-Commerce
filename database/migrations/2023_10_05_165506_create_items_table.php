@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->onDelete('no action');
             $table->string('name');
-            $table->text('description');
-            $table->string('image');
-            $table->double('weight');
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->unsignedDouble('weight');
             $table->unsignedInteger('quantity');
             $table->string('status');
             $table->timestamps();
