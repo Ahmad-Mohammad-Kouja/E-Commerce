@@ -34,11 +34,11 @@ class ItemRequest extends FormRequest
         return [
             'category_id' => ['required', 'exists:categories,id'],
             'name' => ['required', 'string'],
-            'description' => ['string', 'nullable'],
-            'weight' => ['numeric', 'required', 'min:0'],
-            'status' => [new EnumKey(ItemStatusEnum::class)],
-            'image' => ['string', 'nullable'],
-            'quantity' => ['int', 'required', 'min:0'],
+            'description' => ['nullable', 'string'],
+            'weight' => ['required', 'numeric', 'min:0'],
+            'status' => ['required', new EnumKey(ItemStatusEnum::class)],
+            'image' => ['nullable', 'string'],
+            'quantity' => ['required', 'numeric', 'min:0'],
         ];
     }
 }

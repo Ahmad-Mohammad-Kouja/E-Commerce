@@ -21,7 +21,7 @@ class ItemShowResource extends JsonResource
             'weight' => $this->weight,
             'quantity' => $this->quantity,
             'status' => $this->status,
-            'category_id' => $this->category->id,
+            'category_id' => $this->category_id,
         ];
     }
 }

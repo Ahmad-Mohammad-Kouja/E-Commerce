@@ -64,10 +64,11 @@ class Item extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function getForGride()
+    public function getForGrid()
     {
         return QueryBuilder::for(Item::class)
             ->with('category')
-            ->allowedFilters(['name', AllowedFilter::exact('status')]);
+            ->allowedFilters(['name', AllowedFilter::exact('status')])
+            ->get();
     }
 }
