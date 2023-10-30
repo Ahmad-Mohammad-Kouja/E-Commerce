@@ -7,5 +7,5 @@ Route::prefix('auth')
     ->controller(AuthController::class)
     ->group(function () {
         Route::post('login', 'login')->name('login');
-        Route::delete('logout', 'logout')->name('logout');
+        Route::delete('logout', 'logout')->name('logout')->middleware('auth');
     });

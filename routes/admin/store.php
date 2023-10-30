@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('/')->group(function () {
+Route::prefix('/')->middleware('auth')->group(function () {
     Route::apiResource('stores', StoreController::class);
 });
