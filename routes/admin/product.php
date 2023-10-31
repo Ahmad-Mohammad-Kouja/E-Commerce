@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('/')->middleware('auth')->group(function () {
+Route::prefix('/')->middleware('auth:admin')->group(function () {
     Route::apiResources([
         'items' => ItemController::class,
         'categories' => CategoryController::class,
