@@ -24,7 +24,7 @@ class StoreStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', Rule::unique('stores', 'name')],
-            'city_id' => ['required', 'max:255', Rule::exists('cities', 'id')],
+            'city_id' => ['required', 'integer', Rule::exists('cities', 'id')],
             'is_main' => ['sometimes', 'boolean'],
         ];
     }

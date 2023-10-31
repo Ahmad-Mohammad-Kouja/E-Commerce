@@ -2,9 +2,9 @@
 
 namespace App\Src\Admin\Products\Requests;
 
-use App\Domains\Products\Enums\ItemStatusEnum;
-use BenSampo\Enum\Rules\EnumKey;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Domains\Products\Enums\ItemStatusEnum;
 
 /**
  * @property mixed $name
@@ -36,8 +36,8 @@ class ItemRequest extends FormRequest
             'name' => ['required', 'string'],
             'description' => ['nullable', 'string'],
             'weight' => ['required', 'numeric', 'min:0'],
-            'status' => ['required', new EnumKey(ItemStatusEnum::class)],
-            'image' => ['nullable', 'string'],
+            'status' => ['required', new EnumValue(ItemStatusEnum::class, false)],
+            // 'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'quantity' => ['required', 'numeric', 'min:0'],
         ];
     }

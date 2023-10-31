@@ -21,4 +21,6 @@ yarn-error.log
 .phpunit.cache
 e-commerce-erd.graphml
 e-commerce-erd.pdf
+/public/media
+
 

@@ -22,6 +22,7 @@ class ItemShowResource extends JsonResource
             'quantity' => $this->quantity,
             'status' => $this->status,
             'category_id' => $this->category_id,
+            'image' => $this->getFirstMediaUrl('items') ?? null,
         ];
     }
 }

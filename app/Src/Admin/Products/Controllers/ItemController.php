@@ -26,6 +26,10 @@ class ItemController extends Controller
         try {
             $item = $this->item->create($request->validated());
 
+            if ($request->hasFile('image')) {
+                $item->addMediaFromRequest('image')->toMediaCollection('items');
+            }
+
             return $this->createdResponse(new ItemGridResource($item), 'created');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
