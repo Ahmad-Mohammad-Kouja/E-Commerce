@@ -16,7 +16,6 @@ class ItemGridResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'image' => $this->image,
             'weight' => $this->weight,
             'quantity' => $this->quantity,
             'status' => $this->status,
