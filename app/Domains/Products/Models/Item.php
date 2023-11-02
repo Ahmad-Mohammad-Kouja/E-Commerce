@@ -2,17 +2,17 @@
 
 namespace App\Domains\Products\Models;
 
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\AllowedFilter;
 use App\Domains\Operations\Models\Cart;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use App\Domains\Operations\Models\OrderDetail;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 /**
  * @method static create(array $array)
@@ -72,7 +72,7 @@ class Item extends Model implements HasMedia
     public function getForGrid()
     {
         return QueryBuilder::for(Item::class)
-            ->with('category')
+            ->with('category', 'media')
             ->allowedFilters(['name', AllowedFilter::exact('status')])
             ->get();
     }

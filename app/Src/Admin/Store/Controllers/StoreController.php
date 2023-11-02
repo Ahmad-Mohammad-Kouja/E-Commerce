@@ -22,6 +22,7 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         $stores = $this->store->getForGrid();
+
         return $this->successResponse(StoreGridResource::collection($stores), 'success');
     }
 

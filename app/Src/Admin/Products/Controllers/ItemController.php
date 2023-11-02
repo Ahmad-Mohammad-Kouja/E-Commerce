@@ -30,7 +30,7 @@ class ItemController extends Controller
                 $item->addMediaFromRequest('image')->toMediaCollection('items');
             }
 
-            return $this->createdResponse(new ItemGridResource($item), 'created');
+            return $this->createdResponse(new ItemShowResource($item), 'created');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
@@ -46,7 +46,7 @@ class ItemController extends Controller
         try {
             $item->update($request->validated());
 
-            return $this->successResponse(new ItemGridResource($item), 'updated');
+            return $this->successResponse(new ItemShowResource($item), 'updated');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
