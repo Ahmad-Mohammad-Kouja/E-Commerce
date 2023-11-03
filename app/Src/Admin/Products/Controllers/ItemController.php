@@ -10,7 +10,6 @@ use App\Src\Admin\Products\Requests\ItemUpdateRequest;
 use App\Src\Admin\Products\Resources\ItemGridResource;
 use App\Src\Admin\Products\Resources\ItemShowResource;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
@@ -32,7 +31,7 @@ class ItemController extends Controller
             $item = $this->item->create($request->validated());
 
             if ($request->hasFile('image')) {
-                $item->addMediaFromRequest('image')->toMediaCollection('item-' . $item->id);
+                $item->addMediaFromRequest('image')->toMediaCollection('items');
             }
             DB::commit();
             return $this->createdResponse(new ItemShowResource($item), 'created');
@@ -62,9 +61,9 @@ class ItemController extends Controller
     {
         try {
             // Remove the existing image from the media library
-            $item->clearMediaCollection('item-' . $item->id);
+            $item->clearMediaCollection('items');
             // Store the new image in the media library
-            $item->addMediaFromRequest('image')->toMediaCollection('item-' . $item->id);
+            $item->addMediaFromRequest('image')->toMediaCollection('items');
             return $this->successResponse(new ItemShowResource($item), 'updated');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
@@ -76,7 +75,7 @@ class ItemController extends Controller
         try {
             DB::beginTransaction();
             // Remove the existing image from the media library
-            $item->clearMediaCollection('item-' . $item->id);
+            $item->clearMediaCollection('items');
             // Remove the item
             $item->delete();
             DB::commit();

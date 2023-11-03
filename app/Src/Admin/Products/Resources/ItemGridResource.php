@@ -23,12 +23,7 @@ class ItemGridResource extends JsonResource
                 'id'   => $this->category_id,
                 'name' => $this->whenLoaded('category', $this->category->name)
             ],
-            'image' => $this->when(
-                $this->hasMedia('items'),
-                function () {
-                    return $this->getFirstMediaUrl('item-' . $this->id);
-                }
-            ),
+            'image' => $this->getFirstMediaUrl('items')
         ];
     }
 }
