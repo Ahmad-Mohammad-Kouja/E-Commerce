@@ -26,7 +26,7 @@ class ItemGridResource extends JsonResource
             'image' => $this->when(
                 $this->hasMedia('items'),
                 function () {
-                    return $this->getFirstMediaUrl('items');
+                    return $this->getFirstMediaUrl('item-' . $this->id);
                 }
             ),
         ];

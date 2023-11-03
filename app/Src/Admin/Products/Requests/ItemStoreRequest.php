@@ -14,7 +14,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property mixed $quantity
  * @property mixed $status
  */
-class ItemRequest extends FormRequest
+class ItemStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
