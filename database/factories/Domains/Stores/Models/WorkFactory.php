@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Domains\Stores\Models;
 
+use App\Domains\Stores\Models\Store;
 use App\Domains\Stores\Models\Work;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,6 +18,7 @@ class WorkFactory extends Factory
     public function definition(): array
     {
         return [
+            'store_id' => Store::factory(),
             'day' => fake()->randomElement(['Sat', 'Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri']),
             'working' => fake()->randomNumber([0, 1]),
             'from' => fake()->time(),

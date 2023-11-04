@@ -19,7 +19,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'parent_id' => Category::factory(),
+            'parent_id' => null,
             'name' => fake()->name(),
             'description' => fake()->text(),
             'image' => fake()->image(),
