@@ -15,15 +15,12 @@ class ItemGridResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'name' => $this->name,
-            'weight' => $this->weight,
-            'quantity' => $this->quantity,
-            'status' => $this->status,
-            'category' => [
-                'id'   => $this->category_id,
-                'name' => $this->whenLoaded('category', $this->category->name)
-            ],
-            'image' => $this->getFirstMediaUrl('items')
+            'id'             => $this->id,
+            'name'           => $this->name,
+            'quantity'       => $this->quantity,
+            'status'         => $this->status,
+            'category_name'  => $this->whenLoaded('category', fn () => $this->category->name),
+            'image'          => $this->whenLoaded('media', fn () => $this->getFirstMediaUrl('items'))
         ];
     }
 }

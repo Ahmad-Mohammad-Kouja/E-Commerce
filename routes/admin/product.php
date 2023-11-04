@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:admin')->group(function () {
     Route::post('items/{item}/update-image', [ItemController::class, 'updateImage']);
+    Route::post('categories/{category}/update-image', [CategoryController::class, 'updateImage']);
     Route::apiResources([
         'items' => ItemController::class,
         'categories' => CategoryController::class,

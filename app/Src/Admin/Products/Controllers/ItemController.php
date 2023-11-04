@@ -34,7 +34,7 @@ class ItemController extends Controller
                 $item->addMediaFromRequest('image')->toMediaCollection('items');
             }
             DB::commit();
-            return $this->createdResponse(new ItemShowResource($item), 'created');
+            return $this->createdResponse(new ItemShowResource($item->load('media')), 'created');
         } catch (\Throwable $th) {
             DB::rollBack();
             return $this->failedResponse($th->getMessage());
@@ -43,7 +43,7 @@ class ItemController extends Controller
 
     public function show(Item $item)
     {
-        return $this->successResponse(new ItemShowResource($item), 'success');
+        return $this->successResponse(new ItemShowResource($item->load('media')), 'success');
     }
 
     public function update(ItemUpdateRequest $request, Item $item)
@@ -64,7 +64,7 @@ class ItemController extends Controller
             $item->clearMediaCollection('items');
             // Store the new image in the media library
             $item->addMediaFromRequest('image')->toMediaCollection('items');
-            return $this->successResponse(new ItemShowResource($item), 'updated');
+            return $this->successResponse(new ItemShowResource($item->load('media')), 'updated');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
         }
