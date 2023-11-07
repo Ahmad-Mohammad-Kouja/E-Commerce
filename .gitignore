@@ -19,5 +19,3 @@ yarn-error.log
 /.vscode
 /.trunk
 .phpunit.cache
-e-commerce-erd.graphml
-e-commerce-erd.pdf
