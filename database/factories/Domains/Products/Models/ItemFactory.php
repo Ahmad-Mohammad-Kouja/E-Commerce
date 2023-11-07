@@ -21,7 +21,6 @@ class ItemFactory extends Factory
             'category_id' => Category::factory(),
             'name' => fake()->name(),
             'description' => fake()->text(),
-            'image' => fake()->image(),
             'weight' => fake()->randomFloat(0.1, 10000),
             'quantity' => fake()->randomNumber(),
             'status' => fake()->randomElement(['archived', 'active']),
