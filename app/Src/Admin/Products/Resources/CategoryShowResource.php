@@ -23,7 +23,7 @@ class CategoryShowResource extends JsonResource
                 'id'    => $this->parent_id,
                 'name'  => $this->whenLoaded('parent', fn () => $this->parent->name),
             ],
-            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->media)),
+            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('categories'))),
         ];
     }
 }

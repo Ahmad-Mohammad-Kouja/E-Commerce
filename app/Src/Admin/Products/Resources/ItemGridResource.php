@@ -20,7 +20,7 @@ class ItemGridResource extends JsonResource
             'quantity'       => $this->quantity,
             'status'         => $this->status,
             'category_name'  => $this->whenLoaded('category', fn () => $this->category->name),
-            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->media)),
+            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('items'))),
         ];
     }
 }

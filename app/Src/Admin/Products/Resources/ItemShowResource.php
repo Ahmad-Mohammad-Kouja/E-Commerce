@@ -25,7 +25,7 @@ class ItemShowResource extends JsonResource
                 'id'    => $this->category_id,
                 'name'  => $this->whenLoaded('category', fn () => $this->category->name),
             ],
-            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->media)),
+            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('items'))),
         ];
     }
 }
