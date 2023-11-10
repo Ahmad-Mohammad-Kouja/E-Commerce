@@ -19,7 +19,7 @@ class CategoryGridResource extends JsonResource
             'name'        => $this->name,
             'status'      => $this->status,
             'parent_name' => $this->when($this->parent_id, fn () => $this->parent->name),
-            'image'       => $this->whenLoaded('media', fn () => $this->getFirstMediaUrl('categories'))
+            'image'       => $this->whenLoaded('media', fn () => new MediaResource($this->media)),
         ];
     }
 }

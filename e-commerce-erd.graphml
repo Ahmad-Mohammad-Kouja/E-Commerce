@@ -217,7 +217,7 @@ read_at
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="110.61855670103103" width="95.6701030927835" x="-221.39856057413002" y="-30.8212783505155"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#FF0000" type="line" width="1.0"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="51.89234924316406" x="21.888876924809722" xml:space="preserve" y="4.0">provider</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="69.37645721435547" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="89.40461730957031" x="2.0" xml:space="preserve" y="32.34411430358887">user_id
 provider
@@ -253,7 +253,7 @@ image<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParame
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="141.77435780600348" width="113.79199999999992" x="436.9040000000001" y="141.34387082075517"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#FF0000" type="line" width="1.0"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="31.240219116210938" x="41.27589044189449" xml:space="preserve" y="4.0">offer</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="102.0646858215332" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="96.98867797851562" x="2.0" xml:space="preserve" y="32.34411430358887">id
 item_id
@@ -726,13 +726,11 @@ delivery_fee<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mode
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e24" source="n18" target="n2">
+    <edge id="e24" source="n18" target="n19">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="25.595698825014267" ty="-46.73323379725022">
-            <y:Point x="418.2017982725281" y="-406.3971127463588"/>
-            <y:Point x="411.9706380515338" y="-19.175013298845045"/>
-            <y:Point x="369.24268225042874" y="-19.175013298845045"/>
+          <y:Path sx="0.0" sy="0.0" tx="20.352760554570978" ty="-41.562081393112045">
+            <y:Point x="698.132075471698" y="-406.3971127463588"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="crows_foot_many" target="none"/>

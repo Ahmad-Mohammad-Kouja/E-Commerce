@@ -20,10 +20,12 @@ class ItemShowResource extends JsonResource
             'description' => $this->description,
             'weight'      => $this->weight,
             'quantity'    => $this->quantity,
-            'status'         => $this->status,
-            'category_id'    => $this->category_id,
-            'category_name'  => $this->whenLoaded('category', fn () => $this->category->name),
-            'image'          => $this->whenLoaded('media', fn () => $this->getFirstMediaUrl('items'))
+            'status'      => $this->status,
+            'category'    => [
+                'id'    => $this->category_id,
+                'name'  => $this->whenLoaded('category', fn () => $this->category->name),
+            ],
+            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->media)),
         ];
     }
 }
