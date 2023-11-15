@@ -36,6 +36,4 @@ class ItemStore extends Model
     {
         return $this->hasMany(Wishlist::class);
     }
-
-   
 }
