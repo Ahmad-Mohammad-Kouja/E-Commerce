@@ -1,8 +1,9 @@
 <?php
 
-use App\Src\Admin\Products\Controllers\CategoryController;
-use App\Src\Admin\Products\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
+use App\Src\Admin\Products\Controllers\ItemController;
+use App\Src\Admin\Products\Controllers\CategoryController;
+use App\Src\Admin\Products\Controllers\ItemStoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::apiResources([
     'items' => ItemController::class,
     'categories' => CategoryController::class,
+    'items-stores'=>ItemStoreController::class,
 ]);

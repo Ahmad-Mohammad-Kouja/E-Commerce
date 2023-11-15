@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
-use App\Domains\Shared\Enums\AppTypesEnum;
-use Illuminate\Routing\Console\ControllerMakeCommand as ConsoleControllerMakeCommand;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
+use App\Domains\Shared\Enums\AppTypesEnum;
+use App\Domains\Shared\Enums\DomainTypesEnum;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputArgument;
+use Illuminate\Routing\Console\ControllerMakeCommand as ConsoleControllerMakeCommand;
 
 #[AsCommand(name: 'make-app:controller')]
 class ControllerMakeCommand extends ConsoleControllerMakeCommand
@@ -63,6 +65,7 @@ class ControllerMakeCommand extends ConsoleControllerMakeCommand
         return [
             ['name', InputArgument::REQUIRED, 'The name of the controller class.'],
             ['app', InputArgument::REQUIRED, 'The name of app will be used.'],
+            ['group', InputArgument::REQUIRED, 'The name of group will be used.'],
         ];
     }
 
@@ -75,12 +78,18 @@ class ControllerMakeCommand extends ConsoleControllerMakeCommand
     protected function getDefaultNamespace($rootNamespace)
     {
         $app = $this->argument('app');
-        if (in_array($app, AppTypesEnum::getValues()) === false) {
+        if (in_array(Str::lower($app), AppTypesEnum::getValues()) === false) {
             throw new InvalidArgumentException(
                 'please choose one of the apps '.implode(',', AppTypesEnum::getValues())
             );
         }
+        $group = $this->argument('group');
+        if (in_array(Str::lower($group), DomainTypesEnum::getValues()) === false) {
+            throw new InvalidArgumentException(
+                'please choose one of the domains '.implode(',', DomainTypesEnum::getValues())
+            );
+        }
 
-        return $rootNamespace.'\Src\\'.$app.'\\Controllers';
+        return $rootNamespace.'\Src\\'.(Str::title($app)).'\\'.(Str::title($group)).'\\Controllers';
     }
 }
