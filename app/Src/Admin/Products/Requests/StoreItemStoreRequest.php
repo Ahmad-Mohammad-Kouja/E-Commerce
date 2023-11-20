@@ -5,7 +5,7 @@ namespace App\Src\Admin\Products\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Domains\Products\Rules\PricesCountMatchesStoresCount;
 
-class ItemStoreStoreRequest extends FormRequest
+class StoreItemStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,9 @@ class ItemStoreStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'items.*.prices'=> ['array',new PricesCountMatchesStoresCount()],
-            'items.*.stores' => ['array'],
+            'items.*.id'=>['required','integer'],
+            'items.*.stores.*.id' => ['required','integer'],
+            'items.*.stores.*.price' => ['required','numeric'],
         ];
     }
 }

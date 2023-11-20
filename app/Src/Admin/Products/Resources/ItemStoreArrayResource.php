@@ -3,6 +3,7 @@
 namespace App\Src\Admin\Products\Resources;
 
 use Illuminate\Http\Request;
+use App\Domains\Stores\Models\Store;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ItemStoreArrayResource extends JsonResource
@@ -15,7 +16,8 @@ class ItemStoreArrayResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "id"=>$this->id,
+            "id"=>$this->store_id,
+            "name"=>Store::find($this->store_id)->name,
             "price"=>$this->price,
         ];
     }

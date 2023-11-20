@@ -17,7 +17,7 @@ class ItemStoreResource extends JsonResource
         return [
             'id'=>$this->id,
             'name'=>$this->name,
-            'items'=>ItemStoreArrayResource::collection($this->whenLoaded("itemStores")),
+            'stores'=>ItemStoreArrayResource::collection($this->whenLoaded("itemStores")),
         ];
     }
 }
