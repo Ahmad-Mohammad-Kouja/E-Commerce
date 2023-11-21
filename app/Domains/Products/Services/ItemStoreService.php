@@ -5,16 +5,29 @@ use App\Domains\Products\Models\Item;
 
 class ItemStoreService
 {
-    public function get($itemRequest)
+    //ids items in request
+    public $ids;
+    public function storeItemStore($itemRequest, $itemStore)
     {
-        $ids=collect($itemRequest)->pluck('id')->toArray();
-        $items=Item::whereIn('id', $ids)->get();
-        if (count($items)!=count($itemRequest)) {
+        //get items count from database and compare them
+        $itemsCount=$this->get($itemRequest);
+        if ($itemsCount!=count($itemRequest)) {
             return null;
         }
-        return $ids;
+       //collect the request items in array
+        $data=$this->collect($itemRequest);
+      //delete exist ids in database
+        $itemStore->whereIn('item_id', $this->ids)->delete();
+      //add items in in database
+        $itemStore->insert($data);
+        return $data;
     }
-    public function collect($itemRequest)
+    private function get($itemRequest)
+    {
+        $this->ids=collect($itemRequest)->pluck('id')->toArray();
+        return Item::whereIn('id', $this->ids)->count();
+    }
+    private function collect($itemRequest)
     {
         foreach ($itemRequest as $item) {
             $stores=$item['stores'];
@@ -23,13 +36,5 @@ class ItemStoreService
             }
         }
         return $data;
-    }
-    public function delete($itemStore, $ids)
-    {
-        $itemStore->whereIn('item_id', $ids)->delete();
-    }
-    public function add($itemStore, $data)
-    {
-        $itemStore->insert($data);
     }
 }

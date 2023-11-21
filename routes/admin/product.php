@@ -15,7 +15,7 @@ use App\Src\Admin\Products\Controllers\ItemStoreController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get("items-stores/metaData", [ItemStoreController::class,'metaData']);
+Route::get("items-stores/metadata", [ItemStoreController::class,'metadata']);
 Route::apiResources([
     'items' => ItemController::class,
     'categories' => CategoryController::class,

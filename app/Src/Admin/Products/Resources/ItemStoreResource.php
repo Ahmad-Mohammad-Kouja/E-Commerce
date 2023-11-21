@@ -15,9 +15,8 @@ class ItemStoreResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'=>$this->id,
-            'name'=>$this->name,
-            'stores'=>ItemStoreArrayResource::collection($this->whenLoaded("itemStores")),
+            "id"=>$this->store_id,
+            "price"=>$this->price,
         ];
     }
 }
