@@ -2,13 +2,13 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Str;
-use InvalidArgumentException;
 use App\Domains\Shared\Enums\AppTypesEnum;
 use App\Domains\Shared\Enums\DomainTypesEnum;
+use Illuminate\Routing\Console\ControllerMakeCommand as ConsoleControllerMakeCommand;
+use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputArgument;
-use Illuminate\Routing\Console\ControllerMakeCommand as ConsoleControllerMakeCommand;
 
 #[AsCommand(name: 'make-app:controller')]
 class ControllerMakeCommand extends ConsoleControllerMakeCommand

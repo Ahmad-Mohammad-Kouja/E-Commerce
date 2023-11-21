@@ -2,13 +2,13 @@
 
 namespace App\Src\Admin\Store\Controllers;
 
-use Illuminate\Http\Request;
 use App\Domains\Stores\Models\Store;
 use App\Http\Controllers\Controller;
 use App\Src\Admin\Store\Requests\StoreStoreRequest;
 use App\Src\Admin\Store\Requests\StoreUpdateRequest;
 use App\Src\Admin\Store\Resources\StoreGridResource;
 use App\Src\Admin\Store\Resources\StoreUpdateResource;
+use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
