@@ -43,6 +43,6 @@ class ItemStoreController extends Controller
 
     public function metadata()
     {
-        return $this->successResponse(Store::select(['id', 'name'])->get(), 'success');
+        return $this->successResponse((new Store())->metadata(), 'success');
     }
 }

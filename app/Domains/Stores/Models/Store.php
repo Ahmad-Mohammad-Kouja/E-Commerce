@@ -79,4 +79,9 @@ class Store extends Model
             ->allowedFilters(['name', 'city.name', AllowedFilter::exact('main', 'is_main')])
             ->get();
     }
+
+    public function metadata()
+    {
+        return Store::select(['id', 'name'])->get();
+    }
 }
