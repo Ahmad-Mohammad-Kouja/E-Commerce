@@ -5,7 +5,7 @@ namespace App\Src\Admin\Products\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryGridResource extends JsonResource
+class CategoryShowResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +17,13 @@ class CategoryGridResource extends JsonResource
         return [
             'id'          => $this->id,
             'name'        => $this->name,
+            'description' => $this->description,
             'status'      => $this->status,
-            'parent_name' => $this->when($this->parent_id, fn () => $this->parent->name),
-            'image'       => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('categories'))),
+            'parent'    => [
+                'id'    => $this->parent_id,
+                'name'  => $this->whenLoaded('parent', fn () => $this->parent->name),
+            ],
+            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('categories'))),
         ];
     }
 }

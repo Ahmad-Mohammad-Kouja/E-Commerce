@@ -21,13 +21,9 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        try {
-            $stores = $this->store->getForGrid();
+        $stores = $this->store->getForGrid();
 
-            return $this->successResponse(StoreGridResource::collection($stores), 'success');
-        } catch (\Throwable $th) {
-            return $th->getMessage();
-        }
+        return $this->successResponse(StoreGridResource::collection($stores), 'success');
     }
 
     /**
@@ -54,9 +50,9 @@ class StoreController extends Controller
     public function update(StoreUpdateRequest $request, Store $store)
     {
         $data = $request->validated();
-        if ($data['is_main'] && ! $store->is_main) {
+        if ($data['is_main'] && !$store->is_main) {
             $this->store->removeMainStore();
-        } elseif (! $data['is_main'] && $store->is_main) {
+        } elseif (!$data['is_main'] && $store->is_main) {
             unset($data['is_main']);
         }
         $store->update($data);

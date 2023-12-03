@@ -1,11 +1,20 @@
 <?php
 
-namespace App\Src\Admin\Store\Requests;
+namespace App\Src\Admin\Products\Requests;
 
+use App\Domains\Products\Enums\ItemStatusEnum;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreStoreRequest extends FormRequest
+/**
+ * @property mixed $name
+ * @property mixed $id
+ * @property mixed $description
+ * @property mixed $weight
+ * @property mixed $quantity
+ * @property mixed $status
+ */
+class ItemUpdateImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +32,7 @@ class StoreStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:255', Rule::unique('stores', 'name')],
-            'city_id' => ['required', 'integer', Rule::exists('cities', 'id')],
-            'is_main' => ['sometimes', 'boolean'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
         ];
     }
 }

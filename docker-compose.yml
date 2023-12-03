@@ -50,16 +50,16 @@ services:
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:latest
         links:
-          - mysql:mysql
+            - mysql:mysql
         ports:
-          - '${FORWARD_PHPADMIN_PORT:-8080}:80'
+            - '${FORWARD_PHPADMIN_PORT:-8080}:80'
         environment:
-          MYSQL_USERNAME: "${DB_USERNAME}"
-          MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
-          PMA_HOST: mysql
-          UPLOAD_LIMIT: 300M
+            MYSQL_USERNAME: "${DB_USERNAME}"
+            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+            PMA_HOST: mysql
+            UPLOAD_LIMIT: 300M
         networks:
-          - sail
+            - sail
     minio:
         image: 'minio/minio:latest'
         ports:

@@ -2,17 +2,23 @@
 
 namespace App\Domains\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
  * @method static count()
  */
-class Category extends Model
+class Category extends Model  implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
 
     protected $table = 'categories';
 
@@ -39,5 +45,29 @@ class Category extends Model
     public function items(): HasMany
     {
         return $this->hasMany(Item::class);
+    }
+
+    //  Helper Methods
+    public function getForGrid()
+    {
+        return QueryBuilder::for(Category::class)
+            ->with('parent', 'media')
+            ->allowedFilters(['name', AllowedFilter::exact('status')])
+            ->get();
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('sm')
+            ->width(150)
+            ->height(150);
+
+        $this->addMediaConversion('md')
+            ->width(300)
+            ->height(300);
+
+        $this->addMediaConversion('lg')
+            ->width(500)
+            ->height(500);
     }
 }

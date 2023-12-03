@@ -2,10 +2,19 @@
 
 namespace App\Src\Admin\Products\Requests;
 
-use App\Domains\Products\Rules\CategoryHasParentRule;
+use App\Domains\Products\Enums\ItemStatusEnum;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+/**
+ * @property mixed $name
+ * @property mixed $id
+ * @property mixed $description
+ * @property mixed $weight
+ * @property mixed $quantity
+ * @property mixed $status
+ */
+class CategoryUpdateImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +32,7 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'parent_id' => ['nullable', 'integer', new CategoryHasParentRule],
-            'name' => ['string', 'required'],
-            'description' => ['nullable', 'string'],
-            'status' => ['required', 'string'],
-            'image' => ['nullable', 'string'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
         ];
     }
 }

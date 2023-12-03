@@ -15,13 +15,17 @@ class ItemShowResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'name' => $this->name,
+            'id'      => $this->id,
+            'name'    => $this->name,
             'description' => $this->description,
-            'image' => $this->image,
-            'weight' => $this->weight,
-            'quantity' => $this->quantity,
-            'status' => $this->status,
-            'category_id' => $this->category_id,
+            'weight'      => $this->weight,
+            'quantity'    => $this->quantity,
+            'status'      => $this->status,
+            'category'    => [
+                'id'    => $this->category_id,
+                'name'  => $this->whenLoaded('category', fn () => $this->category->name),
+            ],
+            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('items'))),
         ];
     }
 }
