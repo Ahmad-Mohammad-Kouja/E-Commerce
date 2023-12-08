@@ -1,9 +1,10 @@
 <?php
 
-use App\Src\Admin\Products\Controllers\CategoryController;
-use App\Src\Admin\Products\Controllers\ItemController;
-use App\Src\Admin\Products\Controllers\ItemStoreController;
 use Illuminate\Support\Facades\Route;
+use App\Src\Admin\Products\Controllers\ItemController;
+use App\Src\Admin\Products\Controllers\CategoryController;
+use App\Src\Admin\Products\Controllers\ItemOfferController;
+use App\Src\Admin\Products\Controllers\ItemStoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,6 @@ Route::middleware('auth:admin')->group(function () {
         'items' => ItemController::class,
         'categories' => CategoryController::class,
         'items-stores' => ItemStoreController::class,
+        'offer' => ItemOfferController::class,
     ]);
 });
