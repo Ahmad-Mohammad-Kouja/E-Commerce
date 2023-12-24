@@ -2,8 +2,8 @@
 
 namespace App\Src\Admin\Products\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Domains\Products\Models\Item;
+use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\ItemStoreRequest;
 use App\Src\Admin\Products\Requests\ItemUpdateImageRequest;
 use App\Src\Admin\Products\Requests\ItemUpdateRequest;
@@ -34,9 +34,11 @@ class ItemController extends Controller
                 $item->addMediaFromRequest('image')->toMediaCollection('items');
             }
             DB::commit();
+
             return $this->createdResponse(new ItemShowResource($item->load('media')), 'created');
         } catch (\Throwable $th) {
             DB::rollBack();
+
             return $this->failedResponse($th->getMessage());
         }
     }
@@ -64,6 +66,7 @@ class ItemController extends Controller
             $item->clearMediaCollection('items');
             // Store the new image in the media library
             $item->addMediaFromRequest('image')->toMediaCollection('items');
+
             return $this->successResponse(new ItemShowResource($item->load('media')), 'updated');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());
@@ -83,6 +86,7 @@ class ItemController extends Controller
             return $this->deletedResponse('deleted');
         } catch (\Throwable $th) {
             DB::rollBack();
+
             return $this->failedResponse($th->getMessage());
         }
     }

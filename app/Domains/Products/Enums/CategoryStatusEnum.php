@@ -14,6 +14,8 @@ use BenSampo\Enum\Enum;
 final class CategoryStatusEnum extends Enum
 {
     const INACTIVE = 0;
+
     const ACTIVE = 1;
+
     const ARCHIVED = 2;
 }

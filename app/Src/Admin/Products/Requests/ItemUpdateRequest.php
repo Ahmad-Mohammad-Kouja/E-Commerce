@@ -33,11 +33,11 @@ class ItemUpdateRequest extends FormRequest
     {
         return [
             'category_id' => ['required', 'exists:categories,id'],
-            'name'        => ['required', 'string'],
+            'name' => ['required', 'string'],
             'description' => ['nullable', 'string'],
-            'weight'      => ['required', 'numeric', 'min:0'],
-            'status'      => ['required', new EnumValue(ItemStatusEnum::class, false)],
-            'quantity'    => ['required', 'numeric', 'min:0'],
+            'weight' => ['required', 'numeric', 'min:0'],
+            'status' => ['required', new EnumValue(ItemStatusEnum::class, false)],
+            'quantity' => ['required', 'numeric', 'min:0'],
         ];
     }
 }

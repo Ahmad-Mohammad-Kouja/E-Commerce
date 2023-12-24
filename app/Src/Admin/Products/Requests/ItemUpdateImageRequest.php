@@ -2,8 +2,6 @@
 
 namespace App\Src\Admin\Products\Requests;
 
-use App\Domains\Products\Enums\ItemStatusEnum;
-use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**

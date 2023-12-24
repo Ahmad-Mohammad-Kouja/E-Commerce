@@ -18,5 +18,5 @@ final class DomainTypesEnum extends Enum
 
     public const SHARED = 'shared';
 
-    public const STORES = 'stores';
+    public const STORES = 'store';
 }

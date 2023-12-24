@@ -3,6 +3,7 @@
 namespace Database\Factories\Domains\Stores\Models;
 
 use App\Domains\Stores\Models\Ad;
+use App\Domains\Stores\Models\Store;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AdFactory extends Factory
@@ -18,10 +19,11 @@ class AdFactory extends Factory
     {
         return [
             'title' => fake()->title(),
+            'store_id' => Store::factory(),
             'description' => fake()->text(),
             'image' => fake()->image(),
-            'start_date' => fake()->time(),
-            'end_date' => fake()->time(),
+            'start_date' => fake()->date(),
+            'end_date' => fake()->date(),
         ];
     }
 }

@@ -15,11 +15,11 @@ class CategoryGridResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'          => $this->id,
-            'name'        => $this->name,
-            'status'      => $this->status,
+            'id' => $this->id,
+            'name' => $this->name,
+            'status' => $this->status,
             'parent_name' => $this->when($this->parent_id, fn () => $this->parent->name),
-            'image'       => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('categories'))),
+            'image' => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('categories'))),
         ];
     }
 }

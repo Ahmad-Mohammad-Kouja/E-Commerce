@@ -1,18 +1,10 @@
 <?php
 
-namespace App\Src\Admin\Products\Requests;
+namespace App\Src\Admin\Store\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * @property mixed $name
- * @property mixed $id
- * @property mixed $description
- * @property mixed $weight
- * @property mixed $quantity
- * @property mixed $status
- */
-class CategoryUpdateImageRequest extends FormRequest
+class UpdateAdRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +22,12 @@ class CategoryUpdateImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'store_id' => ['sometimes', 'exists:stores,id'],
+            'title' => ['sometimes'],
+            'description' => ['sometimes'],
+            'image' => ['sometimes', 'image'],
+            'start_date' => ['sometimes', 'date'],
+            'end_date' => ['sometimes', 'date', 'after:start_date'],
         ];
     }
 }
