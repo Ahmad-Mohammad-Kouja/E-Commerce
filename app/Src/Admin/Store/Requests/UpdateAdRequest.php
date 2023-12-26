@@ -22,11 +22,9 @@ class UpdateAdRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'store_id' => ['sometimes', 'exists:stores,id'],
-            'title' => ['sometimes'],
-            'description' => ['sometimes'],
+            'title' => ['sometimes', 'string', 'max:256'],
+            'description' => ['nullable', 'string'],
             'image' => ['sometimes', 'image'],
-            'start_date' => ['sometimes', 'date'],
             'end_date' => ['sometimes', 'date', 'after:start_date'],
         ];
     }

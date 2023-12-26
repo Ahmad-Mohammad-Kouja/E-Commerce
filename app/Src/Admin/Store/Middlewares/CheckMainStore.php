@@ -21,7 +21,6 @@ class CheckMainStore
             $storeId = Store::where('is_main', true)->first()?->id;
         }
         session(['current_store_id' => $storeId]);
-        // $request->header('X-Store-Id', $storeId);   // OR
 
         return $next($request);
     }

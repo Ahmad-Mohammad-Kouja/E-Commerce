@@ -14,7 +14,6 @@ class AdController extends Controller
 {
     public function __construct(protected Ad $ad)
     {
-
     }
 
     public function index()
@@ -31,13 +30,15 @@ class AdController extends Controller
     {
         try {
             DB::beginTransaction();
-            $ad = $this->ad->create($request->validated());
+            $result = $request->validated();
+            unset($result['image']);
+            $ad = $this->ad->create($result);
             if ($request->hasFile('image')) {
                 $ad->addMediaFromRequest('image')->toMediaCollection('ads');
             }
             DB::commit();
 
-            return $this->createdResponse($ad, 'success');
+            return $this->createdResponse(new AdGridResource($ad), 'success');
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::error($th->getMessage());
@@ -53,14 +54,16 @@ class AdController extends Controller
     {
         try {
             DB::beginTransaction();
-            $ad->update($request->validated());
+            $req = $request->validated();
+            unset($req['image']);
+            $result = $ad->update($req);
             if ($request->hasFile('image')) {
                 $ad->clearMediaCollection('ads');
                 $ad->addMediaFromRequest('image')->toMediaCollection('ads');
             }
             DB::commit();
 
-            return $this->createdResponse($ad, 'success');
+            return $this->successResponse(new AdGridResource($result), 'success');
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::error($th->getMessage());
@@ -71,9 +74,6 @@ class AdController extends Controller
     {
         try {
             DB::beginTransaction();
-            // Remove the existing image from the media library
-            $ad->clearMediaCollection('ads');
-            // Remove the ad
             $ad->delete();
             DB::commit();
 
