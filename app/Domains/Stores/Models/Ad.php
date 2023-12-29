@@ -43,9 +43,9 @@ class Ad extends Model implements HasMedia
         });
     }
 
-    public function scopeAdActive($query, $value)
+    public function scopeActive($query, $value)
     {
-        $query->where(['end_date', '>=', $value])->where('start_date', '<=', $value);
+        $query->where('end_date', '>=', $value)->where('start_date', '<=', $value);
     }
 
     public function getForGrid()
@@ -56,7 +56,7 @@ class Ad extends Model implements HasMedia
                 AllowedFilter::exact('start_date'),
                 AllowedFilter::exact('end_date'),
                 AllowedFilter::scope('StoreName'),
-                AllowedFilter::scope('AdActive'),
+                AllowedFilter::scope('Active'),
             ])
             ->paginate();
     }
