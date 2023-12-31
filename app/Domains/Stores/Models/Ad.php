@@ -51,7 +51,7 @@ class Ad extends Model implements HasMedia
     public function getForGrid()
     {
         return QueryBuilder::for(Ad::class)
-            ->with('store', 'media')
+            ->with('media')
             ->allowedFilters(['title',
                 AllowedFilter::exact('start_date'),
                 AllowedFilter::exact('end_date'),
