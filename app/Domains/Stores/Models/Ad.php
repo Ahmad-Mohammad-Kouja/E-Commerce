@@ -2,7 +2,6 @@
 
 namespace App\Domains\Stores\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,7 +19,6 @@ class Ad extends Model implements HasMedia
     protected $fillable = [
         'title',
         'store_id',
-        'image',
         'description',
         'start_date',
         'end_date',
@@ -36,13 +34,6 @@ class Ad extends Model implements HasMedia
         return $this->belongsTo(Store::class);
     }
 
-    public function scopeStoreName($query, $value)
-    {
-        $query->whereHas('store', function (Builder $query) use ($value) {
-            $query->where('name', $value);
-        });
-    }
-
     public function scopeActive($query, $value)
     {
         $query->where('end_date', '>=', $value)->where('start_date', '<=', $value);
@@ -55,9 +46,9 @@ class Ad extends Model implements HasMedia
             ->allowedFilters(['title',
                 AllowedFilter::exact('start_date'),
                 AllowedFilter::exact('end_date'),
-                AllowedFilter::scope('StoreName'),
                 AllowedFilter::scope('Active'),
             ])
+            ->where('store_id', session('current_store_id'))
             ->paginate();
     }
 }
