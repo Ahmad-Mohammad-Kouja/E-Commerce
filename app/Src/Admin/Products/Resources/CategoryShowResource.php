@@ -15,15 +15,15 @@ class CategoryShowResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'          => $this->id,
-            'name'        => $this->name,
+            'id' => $this->id,
+            'name' => $this->name,
             'description' => $this->description,
-            'status'      => $this->status,
-            'parent'    => [
-                'id'    => $this->parent_id,
-                'name'  => $this->whenLoaded('parent', fn () => $this->parent->name),
+            'status' => $this->status,
+            'parent' => [
+                'id' => $this->parent_id,
+                'name' => $this->whenLoaded('parent', fn () => $this->parent->name),
             ],
-            'image'  => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('categories'))),
+            'image' => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('categories'))),
         ];
     }
 }

@@ -2,14 +2,14 @@
 
 namespace App\Src\Admin\Products\Controllers;
 
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use App\Domains\Products\Models\Category;
+use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\CategoryStoreRequest;
+use App\Src\Admin\Products\Requests\CategoryUpdateImageRequest;
 use App\Src\Admin\Products\Requests\CategoryUpdateRequest;
 use App\Src\Admin\Products\Resources\CategoryGridResource;
 use App\Src\Admin\Products\Resources\CategoryShowResource;
-use App\Src\Admin\Products\Requests\CategoryUpdateImageRequest;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -64,6 +64,7 @@ class CategoryController extends Controller
             $category->clearMediaCollection('categories');
             // Store the new image in the media library
             $category->addMediaFromRequest('image')->toMediaCollection('categories');
+
             return $this->successResponse(new CategoryShowResource($category->load('media')), 'updated');
         } catch (\Throwable $th) {
             return $this->failedResponse($th->getMessage());

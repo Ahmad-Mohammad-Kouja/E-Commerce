@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Src\Admin\Products\Requests;
+namespace App\Src\Admin\Store\Requests;
 
-use App\Domains\Products\Enums\CategoryStatusEnum;
-use App\Domains\Products\Rules\CategoryHasParentRule;
-use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryUpdateRequest extends FormRequest
+class UpdateAdRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +22,10 @@ class CategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'parent_id' => ['nullable', 'integer', new CategoryHasParentRule],
-            'name' => ['string', 'required'],
+            'title' => ['sometimes', 'string', 'max:256'],
             'description' => ['nullable', 'string'],
-            'status' => ['required', new EnumValue(CategoryStatusEnum::class, false)],
+            'image' => ['sometimes', 'image'],
+            'end_date' => ['sometimes', 'date', 'after:start_date'],
         ];
     }
 }

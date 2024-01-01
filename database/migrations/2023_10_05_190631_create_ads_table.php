@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('store_id')->constrained()->onDelete('no action');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('image');
-            $table->time('start_date');
-            $table->time('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
