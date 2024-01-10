@@ -8,7 +8,7 @@ use App\Domains\Products\Services\ItemStoreService;
 use App\Domains\Stores\Models\Store;
 use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\StoreItemStoreRequest;
-use App\Src\Admin\Products\Resources\ItemStoreItemResource;
+use App\Src\Admin\Products\Resources\ItemStoreGridResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -22,7 +22,7 @@ class ItemStoreController extends Controller
     {
         $items = Item::with('itemStores')->paginate();
 
-        return $this->successResponse(ItemStoreItemResource::collection($items), 'success');
+        return $this->successResponse(ItemStoreGridResource::collection($items), 'success');
     }
 
     public function store(StoreItemStoreRequest $request)

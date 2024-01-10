@@ -53,11 +53,6 @@ class Item extends Model implements HasMedia
         return $this->hasMany(Rate::class);
     }
 
-    public function offers(): HasMany
-    {
-        return $this->hasMany(Offer::class);
-    }
-
     public function orderDetails(): HasMany
     {
         return $this->hasMany(OrderDetail::class);

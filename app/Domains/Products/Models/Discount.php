@@ -6,19 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Offer extends Model
+class Discount extends Model
 {
     use HasFactory;
 
-    protected $table = 'offers';
+    protected $table = 'discounts';
+
 
     protected $fillable = [
         'item_store_id',
-        'title',
-        'description',
         'start_date',
         'end_date',
-        'price',
+        'type',
+        'value',
         'status',
     ];
 
@@ -27,7 +27,7 @@ class Offer extends Model
         'end_date' => 'datetime',
     ];
 
-    public function item(): BelongsTo
+    public function itemStore(): BelongsTo
     {
         return $this->belongsTo(ItemStore::class);
     }

@@ -5,7 +5,7 @@ namespace App\Src\Admin\Products\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ItemStoreItemResource extends JsonResource
+class ItemStoreGridResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,11 @@ class ItemStoreItemResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'stores' => ItemStoreResource::collection($this->whenLoaded('itemStores')),
+            'item_name' => $this->whenLoaded('item', fn () => $this->item->name),
+            'price' => $this->price,
+            'price_with_discount' => $this->price_with_discount,
+
+            // 'stores' => ItemStoreResource::collection($this->whenLoaded('itemStores')),
         ];
     }
 }

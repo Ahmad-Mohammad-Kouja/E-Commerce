@@ -5,7 +5,7 @@ namespace App\Src\Admin\Products\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class OfferShowResource extends JsonResource
+class DiscountResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,10 +20,13 @@ class OfferShowResource extends JsonResource
             'end_date'       => $this->end_date,
             'type'           => $this->type,
             'value'          => $this->value,
-            'item'      => [
-                'id'    => $this->item_id,
-                'name'  => $this->whenLoaded('item', fn () => $this->item->name),
-            ],
+            'status'         => $this->status,
+            'item'           => $this->whenLoaded('itemStore.item', function () {
+                return [
+                    'id' => $this->itemStore->item_id,
+                    'name' => $this->itemStore->item->name,
+                ];
+            }),
         ];
     }
 }

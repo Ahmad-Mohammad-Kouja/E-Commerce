@@ -2,8 +2,6 @@
 
 namespace App\Src\Admin\Products\Requests;
 
-use App\Domains\Products\Enums\ItemStatusEnum;
-use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -14,7 +12,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property mixed $quantity
  * @property mixed $status
  */
-class OfferUpdateRequest extends FormRequest
+class StoreDiscountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,11 +30,12 @@ class OfferUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'item_id'    => 'sometimes|required|exists:items,id',
-            'start_date' => 'sometimes|required|date',
-            'end_date'   => 'sometimes|required|date|after:start_date',
-            'type'       => 'sometimes|required|in:percent,fixed',
-            'value'      => 'sometimes|required|numeric',
+            'item_store_id' => 'required|exists:item_stores,id',
+            'start_date'    => 'required|date',
+            'end_date'      => 'required|date|after:start_date',
+            'type'          => 'required|in:percentage,fixed',
+            'value'         => 'required|numeric',
+            'status'        => 'sometimes|boolean',
         ];
     }
 }
