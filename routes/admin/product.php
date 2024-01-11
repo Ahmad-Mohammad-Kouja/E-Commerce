@@ -25,6 +25,6 @@ Route::middleware('auth:admin')->group(function () {
         'items' => ItemController::class,
         'categories' => CategoryController::class,
         'items-stores' => ItemStoreController::class,
-        'discount' => ItemDiscountController::class,
+        'discounts' => ItemDiscountController::class,
     ]);
 });
