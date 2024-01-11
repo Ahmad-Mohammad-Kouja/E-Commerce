@@ -22,7 +22,7 @@ class ItemDiscountController extends Controller
     public function index()
     {
         // Fetch all discounts
-        $discounts = Discount::with('itemStore.item')->get();
+        $discounts = $this->discount->getForGrid();
 
         return $this->successResponse(DiscountGridResource::collection($discounts), 'success');
     }

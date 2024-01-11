@@ -31,4 +31,10 @@ class Discount extends Model
     {
         return $this->belongsTo(ItemStore::class);
     }
+
+    //  Helper Methods
+    public function getForGrid()
+    {
+        return Discount::with('itemStore.item')->get();
+    }
 }
