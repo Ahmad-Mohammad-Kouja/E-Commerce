@@ -2,9 +2,8 @@ name: Notifier
 
 on:
   push:
-
+    branches: [ ITE-10-item-offer ]
   pull_request:
-    branches: [ main ]
 
 jobs:
 
@@ -14,7 +13,7 @@ jobs:
     - name: send custom message
       uses: appleboy/telegram-action@master
       with:
-        to: 693006044
+        to: -4121048875
         token: 6609246670:AAGa5F_2U6BMmuJftcIweX8pfxHUQOgafEg
         message: |
           A new commit has been pushed to the repository.
