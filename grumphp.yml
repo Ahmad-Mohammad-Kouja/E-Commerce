@@ -2,4 +2,14 @@ grumphp:
   tasks:
     phpcs:
       standard: PSR2
-      ignore_patterns: [./lang/*, ./tests/*, ./resources/*, ./database/*, ./bootstrap/*, ./public/*, _ide_helper_models.php, _ide_helper.php]
+      ignore_patterns:
+        [
+          ./lang/*,
+          ./tests/*,
+          ./resources/*,
+          ./database/*,
+          ./bootstrap/*,
+          ./public/*,
+          _ide_helper_models.php,
+          _ide_helper.php,
+        ]

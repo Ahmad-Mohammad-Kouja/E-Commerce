@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         Item::factory()->create();
         ItemStore::factory()->create();
         Wishlist::factory()->create();
-        Offer::factory()->create();
+        // Offer::factory()->create();
         Product::factory()->create();
         Rate::factory()->create();
         Wishlist::factory()->create();

@@ -11,24 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('offers', function (Blueprint $table) {
+        Schema::create('discounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('store_id')->constrained();
-            $table->string('title', 100);
-            $table->string('description');
-            $table->string('image');
+            $table->foreignId('item_store_id')->constrained()->cascadeOnDelete();
             $table->date('start_date');
             $table->date('end_date');
-            $table->unsignedDouble('price');
+            $table->enum('type', ['percentage', 'fixed']);
+            $table->unsignedDouble('value');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('offers');
+        Schema::dropIfExists('discounts');
     }
 };
