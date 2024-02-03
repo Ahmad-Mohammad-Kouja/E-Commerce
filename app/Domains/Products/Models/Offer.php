@@ -18,7 +18,6 @@ class Offer extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $table = 'offers';
-
     protected $fillable = [
         'store_id',
         'title',
