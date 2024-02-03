@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_store_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('store_id')->constrained();
             $table->string('title', 100);
             $table->string('description');
+            $table->string('image');
             $table->date('start_date');
             $table->date('end_date');
             $table->unsignedDouble('price');
