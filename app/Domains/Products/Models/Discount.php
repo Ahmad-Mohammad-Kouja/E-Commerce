@@ -12,7 +12,6 @@ class Discount extends Model
 
     protected $table = 'discounts';
 
-
     protected $fillable = [
         'item_store_id',
         'start_date',

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Src\Admin\Products\Resources;
+namespace App\Src\Admin\Store\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class OfferGridResource extends JsonResource
+class WorkGridResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,10 @@ class OfferGridResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'status' => $this->status,
-            'image' => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('offers'))),
+            'day' => $this->day,
+            'working' => $this->working,
+            'from' => $this->from,
+            'to' => $this->to,
         ];
     }
 }

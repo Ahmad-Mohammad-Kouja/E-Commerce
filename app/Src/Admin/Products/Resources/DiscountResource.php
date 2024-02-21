@@ -15,13 +15,13 @@ class DiscountResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'             => $this->id,
-            'start_date'     => $this->start_date,
-            'end_date'       => $this->end_date,
-            'type'           => $this->type,
-            'value'          => $this->value,
-            'status'         => $this->status,
-            'item'           => $this->whenLoaded('itemStore.item', function () {
+            'id' => $this->id,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'type' => $this->type,
+            'value' => $this->value,
+            'status' => $this->status,
+            'item' => $this->whenLoaded('itemStore.item', function () {
                 return [
                     'id' => $this->itemStore->item_id,
                     'name' => $this->itemStore->item->name,

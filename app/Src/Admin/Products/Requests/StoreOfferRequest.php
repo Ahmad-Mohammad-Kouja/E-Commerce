@@ -2,9 +2,7 @@
 
 namespace App\Src\Admin\Products\Requests;
 
-use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Domains\Products\Enums\DiscountTypeEnum;
 
 /**
  * @property mixed $name
@@ -32,14 +30,14 @@ class StoreOfferRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'store_id'      => ['required', 'exists:stores,id'],
-            'title'         => ['required', 'string'],
-            'description'   => ['nullable', 'string'],
-            'start_date'    => ['required', 'date'],
-            'end_date'      => ['required', 'date', 'after:start_date'],
-            'price'         => ['required', 'numeric'],
-            'status'        => ['sometimes', 'boolean'],
-            'image'         => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'store_id' => ['required', 'exists:stores,id'],
+            'title' => ['required', 'string'],
+            'description' => ['nullable', 'string'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date', 'after:start_date'],
+            'price' => ['required', 'numeric'],
+            'status' => ['sometimes', 'boolean'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
         ];
     }
 }

@@ -1,18 +1,11 @@
 <?php
 
-namespace App\Src\Admin\Products\Requests;
+namespace App\Src\Admin\Store\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-/**
- * @property mixed $name
- * @property mixed $id
- * @property mixed $description
- * @property mixed $weight
- * @property mixed $quantity
- * @property mixed $status
- */
-class UpdateOfferImageRequest extends FormRequest
+class StoreWorkRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +23,10 @@ class UpdateOfferImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'day' => ['required', 'string', Rule::unique('works', 'day')],
+            'working' => ['sometimes', 'boolean'],
+            'from' => ['required', 'time'],
+            'to' => ['required', 'time', 'after:from'],
         ];
     }
 }

@@ -2,16 +2,15 @@
 
 namespace App\Src\Admin\Products\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 use App\Domains\Products\Models\Offer;
-use App\Src\Admin\Products\Resources\OfferResource;
+use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\StoreOfferRequest;
+use App\Src\Admin\Products\Requests\UpdateOfferImageRequest;
 use App\Src\Admin\Products\Requests\UpdateOfferRequest;
 use App\Src\Admin\Products\Resources\OfferGridResource;
-use App\Src\Admin\Products\Requests\UpdateOfferImageRequest;
+use App\Src\Admin\Products\Resources\OfferResource;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ItemOfferController extends Controller
 {
@@ -37,9 +36,11 @@ class ItemOfferController extends Controller
                 $offer->addMediaFromRequest('image')->toMediaCollection('offers');
             }
             DB::commit();
+
             return $this->createdResponse(new OfferResource($offer->load('media')), 'created');
         } catch (\Throwable $th) {
             DB::rollBack();
+
             return $this->failedResponse($th->getMessage());
         }
     }
@@ -53,6 +54,7 @@ class ItemOfferController extends Controller
     {
         try {
             $offer->update($request->validated());
+
             return $this->successResponse(new OfferResource($offer), 'updated');
         } catch (\Throwable $th) {
             Log::error('error when update offer!');
@@ -66,6 +68,7 @@ class ItemOfferController extends Controller
             $offer->clearMediaCollection('offers');
             // Store the new image in the media library
             $offer->addMediaFromRequest('image')->toMediaCollection('offers');
+
             return $this->successResponse(new OfferResource($offer->load('media')), 'updated');
         } catch (\Throwable $th) {
             Log::error('error when updateImage offer!');

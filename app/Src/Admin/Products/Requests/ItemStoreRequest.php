@@ -33,12 +33,12 @@ class ItemStoreRequest extends FormRequest
     {
         return [
             'category_id' => ['required', 'exists:categories,id'],
-            'name'        => ['required', 'string'],
+            'name' => ['required', 'string'],
             'description' => ['nullable', 'string'],
-            'weight'      => ['required', 'numeric', 'min:0'],
-            'status'      => ['required', new EnumValue(ItemStatusEnum::class, false)],
-            'image'       => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
-            'quantity'    => ['required', 'numeric', 'min:0'],
+            'weight' => ['required', 'numeric', 'min:0'],
+            'status' => ['required', new EnumValue(ItemStatusEnum::class, false)],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'quantity' => ['required', 'numeric', 'min:0'],
         ];
     }
 }

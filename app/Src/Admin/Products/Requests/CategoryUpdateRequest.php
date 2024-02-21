@@ -2,10 +2,10 @@
 
 namespace App\Src\Admin\Products\Requests;
 
-use BenSampo\Enum\Rules\EnumValue;
-use Illuminate\Foundation\Http\FormRequest;
 use App\Domains\Products\Enums\CategoryStatusEnum;
 use App\Domains\Products\Rules\CategoryHasParentRule;
+use BenSampo\Enum\Rules\EnumValue;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryUpdateRequest extends FormRequest
 {
@@ -25,10 +25,10 @@ class CategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'parent_id'   => ['nullable', 'integer', new CategoryHasParentRule],
-            'name'        => ['string', 'required'],
+            'parent_id' => ['nullable', 'integer', new CategoryHasParentRule],
+            'name' => ['string', 'required'],
             'description' => ['nullable', 'string'],
-            'status'      => ['required', new EnumValue(CategoryStatusEnum::class, false)],
+            'status' => ['required', new EnumValue(CategoryStatusEnum::class, false)],
         ];
     }
 }

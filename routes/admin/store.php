@@ -1,6 +1,7 @@
 <?php
 
 use App\Src\Admin\Store\Controllers\StoreController;
+use App\Src\Admin\Store\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:admin')->group(function () {
     Route::apiResource('stores', StoreController::class);
+    Route::apiResource('works', WorkController::class);
 });

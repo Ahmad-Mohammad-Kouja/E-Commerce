@@ -2,20 +2,20 @@
 
 namespace App\Src\Admin\Products\Controllers;
 
-use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 use App\Domains\Products\Models\Discount;
-use App\Src\Admin\Products\Resources\DiscountResource;
+use App\Http\Controllers\Controller;
 use App\Src\Admin\Products\Requests\StoreDiscountRequest;
 use App\Src\Admin\Products\Requests\UpdateDiscountRequest;
 use App\Src\Admin\Products\Resources\DiscountGridResource;
+use App\Src\Admin\Products\Resources\DiscountResource;
+use Illuminate\Support\Facades\Log;
 
 class ItemDiscountController extends Controller
 {
-
     public function __construct(protected Discount $discount)
     {
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -52,6 +52,7 @@ class ItemDiscountController extends Controller
     {
         try {
             $discount->update($request->validated());
+
             return $this->successResponse(new DiscountResource($discount), 'updated');
         } catch (\Throwable $th) {
             Log::error('Something went wrong!');
@@ -64,6 +65,7 @@ class ItemDiscountController extends Controller
     public function destroy(Discount $discount)
     {
         $discount->delete();
+
         return $this->deletedResponse('deleted');
     }
 }
