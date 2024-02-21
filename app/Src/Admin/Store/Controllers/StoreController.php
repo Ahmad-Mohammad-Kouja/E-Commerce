@@ -50,9 +50,9 @@ class StoreController extends Controller
     public function update(StoreUpdateRequest $request, Store $store)
     {
         $data = $request->validated();
-        if ($data['is_main'] && !$store->is_main) {
+        if ($data['is_main'] && ! $store->is_main) {
             $this->store->removeMainStore();
-        } elseif (!$data['is_main'] && $store->is_main) {
+        } elseif (! $data['is_main'] && $store->is_main) {
             unset($data['is_main']);
         }
         $store->update($data);

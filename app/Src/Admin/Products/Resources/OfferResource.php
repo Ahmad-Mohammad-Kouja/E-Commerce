@@ -15,15 +15,15 @@ class OfferResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'             => $this->id,
-            'title'          => $this->title,
-            'description'    => $this->description,
-            'status'         => $this->status,
-            'start_date'     => $this->start_date,
-            'end_date'       => $this->end_date,
-            'price'          => $this->price,
-            'store_name'     => $this->whenLoaded('store', fn () => $this->store->name),
-            'image'          => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('offers'))),
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'status' => $this->status,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'price' => $this->price,
+            'store_name' => $this->whenLoaded('store', fn () => $this->store->name),
+            'image' => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('offers'))),
         ];
     }
 }

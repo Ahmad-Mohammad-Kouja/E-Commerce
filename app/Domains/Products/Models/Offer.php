@@ -2,15 +2,15 @@
 
 namespace App\Domains\Products\Models;
 
-use Spatie\MediaLibrary\HasMedia;
 use App\Domains\Stores\Models\Store;
-use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\AllowedFilter;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class Offer extends Model implements HasMedia
 {
@@ -18,6 +18,7 @@ class Offer extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $table = 'offers';
+
     protected $fillable = [
         'store_id',
         'title',
@@ -48,7 +49,7 @@ class Offer extends Model implements HasMedia
             ->get();
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('sm')
             ->width(150)

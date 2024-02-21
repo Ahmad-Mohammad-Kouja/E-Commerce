@@ -9,7 +9,7 @@ trait ApiResponseHelper
 {
     public function successResponse(
         mixed $data = [],
-        string $message = null,
+        ?string $message = null,
         array $headers = []
     ): JsonResponse {
         return $this->jsonResponse(
@@ -24,7 +24,7 @@ trait ApiResponseHelper
 
     public function createdResponse(
         mixed $data = [],
-        string $message = null,
+        ?string $message = null,
         array $headers = []
     ): JsonResponse {
         return $this->jsonResponse(
@@ -38,7 +38,7 @@ trait ApiResponseHelper
     }
 
     public function deletedResponse(
-        string $message = null,
+        ?string $message = null,
         array $headers = []
     ): JsonResponse {
         return $this->jsonResponse(
@@ -51,7 +51,7 @@ trait ApiResponseHelper
     }
 
     public function failedResponse(
-        string $message = null,
+        ?string $message = null,
         array $headers = []
     ): JsonResponse {
         return $this->jsonResponse(
@@ -63,7 +63,7 @@ trait ApiResponseHelper
 
     public function unprocessableResponse(
         mixed $errors = [],
-        string $message = null,
+        ?string $message = null,
         array $headers = []
     ): JsonResponse {
         return $this->jsonResponse(
@@ -77,7 +77,7 @@ trait ApiResponseHelper
     }
 
     public function notFoundResponse(
-        string $message = null,
+        ?string $message = null,
         array $headers = []
     ): JsonResponse {
         return $this->jsonResponse(
@@ -88,7 +88,7 @@ trait ApiResponseHelper
     }
 
     public function unauthorizedResponse(
-        string $message = null,
+        ?string $message = null,
         array $headers = []
     ): JsonResponse {
         return $this->jsonResponse(
@@ -99,7 +99,7 @@ trait ApiResponseHelper
     }
 
     public function forbiddenResponse(
-        string $message = null,
+        ?string $message = null,
         array $headers = []
     ): JsonResponse {
         return $this->jsonResponse(
@@ -110,7 +110,7 @@ trait ApiResponseHelper
     }
 
     public function serverErrorResponse(
-        string $message = null,
+        ?string $message = null,
         array $headers = []
     ): JsonResponse {
         return $this->jsonResponse(

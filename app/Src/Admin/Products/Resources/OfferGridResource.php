@@ -15,10 +15,10 @@ class OfferGridResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'             => $this->id,
-            'title'          => $this->title,
-            'status'         => $this->status,
-            'image'          => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('offers'))),
+            'id' => $this->id,
+            'title' => $this->title,
+            'status' => $this->status,
+            'image' => $this->whenLoaded('media', fn () => new MediaResource($this->getFirstMedia('offers'))),
         ];
     }
 }

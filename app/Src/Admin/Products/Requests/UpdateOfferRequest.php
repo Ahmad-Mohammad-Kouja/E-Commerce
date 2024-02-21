@@ -2,10 +2,7 @@
 
 namespace App\Src\Admin\Products\Requests;
 
-use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Domains\Products\Enums\ItemStatusEnum;
-use App\Domains\Products\Enums\DiscountTypeEnum;
 
 /**
  * @property mixed $name
@@ -33,13 +30,13 @@ class UpdateOfferRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'store_id'      => ['sometimes', 'exists:stores,id'],
-            'title'         => ['sometimes', 'string'],
-            'description'   => ['nullable', 'string'],
-            'start_date'    => ['sometimes', 'date'],
-            'end_date'      => ['sometimes', 'date', 'after:start_date'],
-            'price'         => ['sometimes', 'numeric'],
-            'status'        => ['sometimes', 'boolean'],
+            'store_id' => ['sometimes', 'exists:stores,id'],
+            'title' => ['sometimes', 'string'],
+            'description' => ['nullable', 'string'],
+            'start_date' => ['sometimes', 'date'],
+            'end_date' => ['sometimes', 'date', 'after:start_date'],
+            'price' => ['sometimes', 'numeric'],
+            'status' => ['sometimes', 'boolean'],
         ];
     }
 }

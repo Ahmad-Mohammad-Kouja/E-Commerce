@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Src\Admin\Store\Controllers\WorkController;
 use App\Src\Admin\Store\Controllers\StoreController;
+use App\Src\Admin\Store\Controllers\WorkController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------

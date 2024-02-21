@@ -72,7 +72,7 @@ class Item extends Model implements HasMedia
             ->get();
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('sm')
             ->width(150)

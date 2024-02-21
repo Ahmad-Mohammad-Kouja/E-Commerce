@@ -14,5 +14,6 @@ use BenSampo\Enum\Enum;
 final class DiscountTypeEnum extends Enum
 {
     const FIXED = 0;
+
     const PERCENTAGE = 1;
 }

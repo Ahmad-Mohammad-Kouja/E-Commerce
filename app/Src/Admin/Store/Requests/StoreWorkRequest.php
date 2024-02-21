@@ -23,10 +23,10 @@ class StoreWorkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'day'     => ['required', 'string', Rule::unique('works', 'day')],
+            'day' => ['required', 'string', Rule::unique('works', 'day')],
             'working' => ['sometimes', 'boolean'],
-            'from'    => ['required', 'time'],
-            'to'      => ['required', 'time', 'after:from'],
+            'from' => ['required', 'time'],
+            'to' => ['required', 'time', 'after:from'],
         ];
     }
 }

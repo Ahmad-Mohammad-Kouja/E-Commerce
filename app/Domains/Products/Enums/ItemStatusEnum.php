@@ -14,5 +14,6 @@ final class ItemStatusEnum extends Enum
 {
     // edit this like CategoryStatusEnum ??
     const ARCHIVED = 0;
+
     const ACTIVE = 1;
 }
